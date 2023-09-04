@@ -14,8 +14,13 @@ public class MemberController {
     @Resource(name = "memberService")
     private MemberService memberService;
 
+    @GetMapping("/joinForm")
+    private String joinForm(){
+        return "/fragment/main_layout";
+    }
     @PostMapping("/join")
     private String join(MemberVO memberVO){
+        memberService.join(memberVO);
         return "redirect:/";
     }
 

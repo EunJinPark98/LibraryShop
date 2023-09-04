@@ -12,6 +12,7 @@ public class MemberVO {
     private String memberAddr;
     private String addrDetail;
     private String memberEmail;
+    private String[] memberEmails;
     private String gender;
     private String memberRoll;
 }

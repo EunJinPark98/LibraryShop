@@ -27,12 +27,15 @@
             , #{memberPw}
             , #{memberName}
             ,
-            <foreach collection="memberTels" item="tel" separator="|| + '-' + ||">
+            <foreach collection="memberTels" item="tel" separator="||'-'||">
                 #{tel}
             </foreach>
             , #{memberAddr}
             , #{addrDetail}
-            , #{memberEmail}
+            ,
+            <foreach collection="memberEmails" item="email" separator="||">
+                #{email}
+            </foreach>
         )
     </insert>
 
