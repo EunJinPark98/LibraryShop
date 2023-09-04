@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{/fragment/main_layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title></title>
 </head>
 <body>
-    <h3>main.html 입니당</h3>
+    <th:block layout:fragment="content">
+        <h3>메인페이지입니다</h3>
+    </th:block>
 </body>
 </html>
