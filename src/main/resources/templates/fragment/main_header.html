@@ -60,12 +60,8 @@
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!-- <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div> -->
                     <div class="modal-body">
-                        <form class="row g-3">
+                        <form class="row g-3" action="/member/join" method="post">
                             <div class="col-8">
                                 <label for="memberId" class="form-label">ID</label>
                                 <input type="text" class="form-control" id="memberId" name="memberId">
@@ -84,7 +80,7 @@
                             </div>
                             <div class="col-4">
                                 <label for="" class="form-label">TEL</label>
-                                <select class="form-select" name="memberTel" id="">
+                                <select class="form-select" name="memberTels" id="">
                                     <option value="010" selected>010</option>
                                     <option value="011">011</option>
                                     <option value="012">012</option>
@@ -92,11 +88,11 @@
                             </div>
                             <div class="col-4">
                                 <label for="" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="" name="memberTel">
+                                <input type="text" class="form-control" id="" name="memberTels">
                             </div>
                             <div class="col-4">
                                 <label for="" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="" name="memberTel">
+                                <input type="text" class="form-control" id="" name="memberTels">
                             </div>
                             <div class="col-8">
                                 <label for="memberAddr" class="form-label">ADDRESS</label>
@@ -111,7 +107,7 @@
                             </div>
                             <div class="col-8">
                                 <label for="memberEmail" class="form-label">EMAIL</label>
-                                <input type="email" class="form-control" id="memberEmail">
+                                <input type="text" class="form-control" id="memberEmail">
                             </div>
                             <div class="col-4">
                                 <label for="" class="form-label">&nbsp;</label>
@@ -132,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="offset-6 col-3 d-grid">
-                              <button type="submit" class="btn btn-primary">Sign in</button>
+                              <input type="submit" class="btn btn-primary" value="가입">
                             </div>
                             <div class="col-3 d-grid">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+    <resultMap id="member" type="com.green.Shop.member.vo.MemberVO">
+        <result column="MEMBER_ID" property="memberId"/>
+        <result column="MEMBER_PW" property="memberPw"/>
+        <result column="MEMBER_NAME" property="memberName"/>
+        <result column="MEMBER_TEL" property="memberTel"/>
+        <result column="MEMBER_ADDR" property="memberAddr"/>
+        <result column="ADDR_DETAIL" property="addrDetail"/>
+        <result column="MEMBER_EMAIL" property="memberEmail"/>
+        <result column="MEMBER_ROLL" property="memberRoll"/>
+    </resultMap>
+
+    <insert id="join">
+        INSERT INTO SHOP_MEMBER (
+            MEMBER_ID
+            , MEMBER_PW
+            , MEMBER_NAME
+            , MEMBER_TEL
+            , MEMBER_ADDR
+            , ADDR_DETAIL
+            , MEMBER_EMAIL
+        ) VALUES(
+            #{memberId}
+            , #{memberPw}
+            , #{memberName}
+            ,
+            <foreach collection="memberTels" item="tel" separator="|| + '-' + ||">
+                #{tel}
+            </foreach>
+            , #{memberAddr}
+            , #{addrDetail}
+            , #{memberEmail}
+        )
+    </insert>
+
+
+</mapper>
