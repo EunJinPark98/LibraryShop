@@ -14,4 +14,9 @@ public class MemberServiceImpl implements MemberService {
     public int join(MemberVO memberVO) {
         return sqlSession.insert("memberMapper.join", memberVO);
     }
+
+    @Override
+    public MemberVO login(MemberVO memberVO) {
+        return sqlSession.selectOne("memberMapper.login", memberVO);
+    }
 }
