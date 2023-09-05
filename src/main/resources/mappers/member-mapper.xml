@@ -53,7 +53,7 @@
         AND MEMBER_PW = #{memberPw}
     </select>
 
-    <select id="idCheck" resultMap="member">
+    <select id="idCheck" resultType="String">
         SELECT MEMBER_ID
         FROM SHOP_MEMBER
         WHERE MEMBER_ID = #{memberId}

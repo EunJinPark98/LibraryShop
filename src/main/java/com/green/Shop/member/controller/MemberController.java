@@ -53,7 +53,7 @@ public class MemberController {
 
     @ResponseBody
     @PostMapping("/idCheck")
-    public MemberVO idCheck(String memberId){
+    public boolean idCheck(String memberId){
         return memberService.idCheck(memberId);
     }
 

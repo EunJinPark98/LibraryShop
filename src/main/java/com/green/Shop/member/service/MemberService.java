@@ -11,5 +11,5 @@ public interface MemberService {
     public MemberVO login(MemberVO memberVO);
 
     //아이디 중복 확인
-    public MemberVO idCheck(String memberId);
+    public boolean idCheck(String memberId);
 }

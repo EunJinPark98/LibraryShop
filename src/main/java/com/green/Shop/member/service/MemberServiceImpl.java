@@ -21,7 +21,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberVO idCheck(String memberId) {
-        return sqlSession.selectOne("memberMapper.idCheck", memberId);
+    public boolean idCheck(String memberId) {
+         String idCheck = sqlSession.selectOne("memberMapper.idCheck", memberId);
+         return idCheck == null ? true : false;
     }
 }

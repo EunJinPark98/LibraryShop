@@ -43,15 +43,9 @@ function inputInvalidate(tagId, msg){
     document.querySelector(tagId).textContent = msg;
 }
 
-//회원 가입 모달창 닫힐 때 마다 실행
-const joinModal = document.querySelector('#join-modal');
-joinModal.addEventListener('hidden.bs.modal', event => {
-    document.querySelector('#joinForm').reset(); 
-})
 
 //아이디 중복확인
 function idCheck(){
-    const memberId = document.querySelector('#memberId').value;
     fetch('/member/idCheck', { 		
         method: 'POST', 		
         cache: 'no-cache',
@@ -59,30 +53,33 @@ function idCheck(){
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         },
         body: new URLSearchParams({
-            'memberId' : memberId
+            'memberId' : document.querySelector('#memberId').value
         })
     })
     .then((response) => {
         if(!response.ok){
-            //컨트롤러로 가다가 오류가 날 경우 실행
             return;
         }
         //return response.text();		//컨트롤러에서 return하는 데이터가 없거나 int, String 일 때
         return response.json(); 		//위의 경우 뺀 나머지 (객체, 리스트)
     })
     .then((data) => {
-        if(data != null){
-            alert('중복된 아이디입니다.');
-            memberId = '';
-            document.querySelector('#joinBotton').disabled = true;
-            return;
-        }else{
+        if(data){
             alert('사용 가능한 아이디입니다.');
-            document.querySelector('#joinBotton').disabled = false;
-            return;
+            document.querySelector('#joinBtn').disabled = false;
+        }else{
+            alert('중복된 아이디입니다.');
         }
     })
     .catch(err=>{
-        //컨트롤러 갔다가 돌아오는데 오류가 날 경우 실행
     });
 }
+
+
+
+//회원 가입 모달창 닫힐 때 마다 실행
+const joinModal = document.querySelector('#join-modal');
+joinModal.addEventListener('hidden.bs.modal', event => {
+    document.querySelector('#joinForm').reset(); 
+})
+
