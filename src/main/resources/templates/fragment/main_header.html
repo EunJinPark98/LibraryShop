@@ -69,7 +69,7 @@
                     <div class="modal-body">
                         <form class="row g-3" action="/member/join" method="post">
                             <div class="col-8">
-                                <label for="memberId" class="form-label">ID</label>
+                                <label for="memberId" class="form-label">아이디</label>
                                 <input type="text" class="form-control" id="memberId" name="memberId">
                             </div>
                             <div class="col-4 d-grid">
@@ -77,7 +77,7 @@
                                 <input type="button" class="btn btn-primary" value="중복확인">
                             </div>
                             <div class="col-12">
-                                <label for="memberPw" class="form-label">PASSWORD</label>
+                                <label for="memberPw" class="form-label">비밀번호</label>
                                 <input type="password" class="form-control" id="memberPw" name="memberPw">
                             </div>
                             <div class="col-12">
@@ -85,7 +85,7 @@
                                 <input type="text" class="form-control" id="memberName" name="memberName">
                             </div>
                             <div class="col-4">
-                                <label for="" class="form-label">TEL</label>
+                                <label for="" class="form-label">연락처</label>
                                 <select class="form-select" name="memberTels" id="">
                                     <option value="010" selected>010</option>
                                     <option value="011">011</option>
@@ -101,18 +101,18 @@
                                 <input type="text" class="form-control" id="" name="memberTels">
                             </div>
                             <div class="col-8">
-                                <label for="memberAddr" class="form-label">ADDRESS</label>
-                                <input type="text" class="form-control" id="memberAddr" name="memberAddr">
+                                <label for="memberAddr" class="form-label">주소</label>
+                                <input type="text" class="form-control" id="memberAddr" name="memberAddr" readonly onclick="openPost()">
                             </div>
                             <div class="col-4 d-grid">
                                 <label for="" class="form-label">&nbsp;</label>
-                                <input type="button" class="btn btn-primary" value="주소검색">
+                                <input type="button" class="btn btn-primary" value="주소검색" onclick="openPost()">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="addrDetail" name="addrDetail">
+                                <input type="text" class="form-control" id="addrDetail" name="addrDetail" placeholder="상세 주소">
                             </div>
                             <div class="col-8">
-                                <label for="memberEmail" class="form-label">EMAIL</label>
+                                <label for="memberEmail" class="form-label">이메일</label>
                                 <input type="text" class="form-control" name="memberEmails">
                             </div>
                             <div class="col-4">
@@ -126,11 +126,11 @@
                             <div class="col-12">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" value="남" checked>
-                                    <label class="form-check-label">Male</label>
+                                    <label class="form-check-label">남성</label>
                                   </div>
                                   <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" value="여">
-                                    <label class="form-check-label">Female</label>
+                                    <label class="form-check-label">여성</label>
                                 </div>
                             </div>
                             <div class="offset-6 col-3 d-grid">
@@ -144,7 +144,8 @@
                 </div>
             </div>
         </div>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="/js/main_header.js"></script>
     </th:block>
 </body>
-
 </html>
