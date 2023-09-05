@@ -60,14 +60,14 @@
             </div>
         </div>
 
-        <!-- JOIN 버튼 클릭 시 실행 할 모달창 -->
+        <!-- 회원가입 버튼 클릭 시 실행 할 모달창 -->
         <!-- 회원가입 Modal -->
         <div class="modal fade" id="join-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form class="row g-3" action="/member/join" method="post">
+                        <form id="joinForm"  class="row g-3" action="/member/join" method="post">
                             <div class="col-8">
                                 <label for="memberId" class="form-label">아이디</label>
                                 <input type="text" class="form-control" id="memberId" name="memberId">
@@ -76,6 +76,7 @@
                                 <label for="" class="form-label">&nbsp;</label>
                                 <input type="button" class="btn btn-primary" value="중복확인">
                             </div>
+                            <div class="error-div" id="id-error-div">아이디 입력이 잘못되었습니다.</div>
                             <div class="col-12">
                                 <label for="memberPw" class="form-label">비밀번호</label>
                                 <input type="password" class="form-control" id="memberPw" name="memberPw">
@@ -134,12 +135,12 @@
                                 </div>
                             </div>
                             <div class="offset-6 col-3 d-grid">
-                              <input type="submit" class="btn btn-primary" value="가입">
+                                <button type="button" class="btn btn-primary" onclick="joinValidate()">가입</button>
                             </div>
                             <div class="col-3 d-grid">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
                             </div>
-                          </form>
+                        </form>
                     </div>
                 </div>
             </div>
