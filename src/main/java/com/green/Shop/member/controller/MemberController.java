@@ -19,27 +19,33 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("/joinForm")
-    private String joinForm(){
+    public String joinForm(){
         return "/fragment/main_layout";
     }
 
     @PostMapping("/join")
-    private String join(MemberVO memberVO){
+    public String join(MemberVO memberVO){
         memberService.join(memberVO);
         return "redirect:/";
     }
 
     @GetMapping("/loginForm")
-    private String loginForm(){
+    public String loginForm(){
         return "/content/member/login";
     }
 
     @PostMapping("/login")
-    private String login(MemberVO memberVO, HttpSession session){
+    public String login(MemberVO memberVO, HttpSession session){
         MemberVO loginInfo = memberService.login(memberVO);
         if(loginInfo != null){
             session.setAttribute("loginInfo", loginInfo);
         }
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("loginInfo");
         return "redirect:/";
     }
 

@@ -15,13 +15,13 @@
                 </th:block>
                 <th:block th:if="${session.loginInfo != null}">
                     [[${session.loginInfo.memberName}]]님 반갑습니다!
-                    <span class="cursor-span">로그아웃</span>
+                    <span class="cursor-span" onclick="location.href='/member/logout';">로그아웃</span>
                 </th:block>
             </div>
         </div>
         <div class="row">
             <div class="col text-center">
-                <h1>그린의 서재</h1>
+                <h1 class="logo">그린의 서재</h1>
             </div>
         </div>
 
