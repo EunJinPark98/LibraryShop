@@ -51,6 +51,12 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @ResponseBody
+    @PostMapping("/idCheck")
+    public MemberVO idCheck(String memberId){
+        return memberService.idCheck(memberId);
+    }
+
 
 
 

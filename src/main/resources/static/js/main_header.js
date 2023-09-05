@@ -10,10 +10,9 @@ function openPost(){
 
 //회원가입 시 데이터 유효성 검사
 function joinValidate(){
+
     const joinForm = document.querySelector('#joinForm');       //form 안에 요소들은 name으로 접근가능!
 
-   
-    
     if(joinForm.memberId.value == ''){
         inputInvalidate('#id-error-div', '아이디를 입력해주세요.');
         return;
@@ -33,7 +32,9 @@ function joinValidate(){
 
     //var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
-   joinForm.submit();
+
+    joinForm.submit();
+
 }
 
 //validate 실패 시 메세지 설정
@@ -47,3 +48,41 @@ const joinModal = document.querySelector('#join-modal');
 joinModal.addEventListener('hidden.bs.modal', event => {
     document.querySelector('#joinForm').reset(); 
 })
+
+//아이디 중복확인
+function idCheck(){
+    const memberId = document.querySelector('#memberId').value;
+    fetch('/member/idCheck', { 		
+        method: 'POST', 		
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        body: new URLSearchParams({
+            'memberId' : memberId
+        })
+    })
+    .then((response) => {
+        if(!response.ok){
+            //컨트롤러로 가다가 오류가 날 경우 실행
+            return;
+        }
+        //return response.text();		//컨트롤러에서 return하는 데이터가 없거나 int, String 일 때
+        return response.json(); 		//위의 경우 뺀 나머지 (객체, 리스트)
+    })
+    .then((data) => {
+        if(data != null){
+            alert('중복된 아이디입니다.');
+            memberId = '';
+            document.querySelector('#joinBotton').disabled = true;
+            return;
+        }else{
+            alert('사용 가능한 아이디입니다.');
+            document.querySelector('#joinBotton').disabled = false;
+            return;
+        }
+    })
+    .catch(err=>{
+        //컨트롤러 갔다가 돌아오는데 오류가 날 경우 실행
+    });
+}

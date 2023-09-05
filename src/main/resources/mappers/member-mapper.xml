@@ -53,6 +53,11 @@
         AND MEMBER_PW = #{memberPw}
     </select>
 
+    <select id="idCheck" resultMap="member">
+        SELECT MEMBER_ID
+        FROM SHOP_MEMBER
+        WHERE MEMBER_ID = #{memberId}
+    </select>
 
 
 </mapper>
