@@ -34,14 +34,13 @@ public class MemberController {
         return "/content/member/login";
     }
 
-    @ResponseBody
     @PostMapping("/login")
     private String login(MemberVO memberVO, HttpSession session){
         MemberVO loginInfo = memberService.login(memberVO);
         if(loginInfo != null){
             session.setAttribute("loginInfo", loginInfo);
         }
-        return "session.loginInfo";
+        return "redirect:/";
     }
 
 

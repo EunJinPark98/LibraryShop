@@ -9,8 +9,14 @@
         <link rel="stylesheet" href="/css/main_header.css">
         <div class="row">
             <div class="col text-end">
-                <span class="cursor-span" onclick="location.href='/member/loginForm';">로그인</span>
-                <span class="cursor-span" data-bs-toggle="modal" data-bs-target="#join-modal">회원가입</span>
+                <th:block th:if="${session.loginInfo == null}">
+                    <span class="cursor-span" onclick="location.href='/member/loginForm';">로그인</span>
+                    <span class="cursor-span" data-bs-toggle="modal" data-bs-target="#join-modal">회원가입</span>
+                </th:block>
+                <th:block th:if="${session.loginInfo != null}">
+                    [[${session.loginInfo.memberName}]]님 반갑습니다!
+                    <span class="cursor-span">로그아웃</span>
+                </th:block>
             </div>
         </div>
         <div class="row">
