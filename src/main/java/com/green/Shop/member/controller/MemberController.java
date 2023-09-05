@@ -5,6 +5,7 @@ import com.green.Shop.member.vo.MemberVO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +41,8 @@ public class MemberController {
         if(loginInfo != null){
             session.setAttribute("loginInfo", loginInfo);
         }
-        return "redirect:/";
+        session.setAttribute("inputId", memberVO.getMemberId());
+        return "content/member/login_result";
     }
 
     @GetMapping("/logout")

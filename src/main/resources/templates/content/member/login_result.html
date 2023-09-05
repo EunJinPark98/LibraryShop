@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <th:block th:if="${session.loginInfo == null}">
+        <script>
+            alert('아이디와 비밀번호를 확인하세요.');
+            location.href = '/member/loginForm';
+        </script>
+    </th:block>
+    <th:block th:if="${session.loginInfo != null}">
+        <script>
+            alert('반갑습니다.');
+            location.href = '/';
+        </script>
+    </th:block>
+</body>
+</html>
