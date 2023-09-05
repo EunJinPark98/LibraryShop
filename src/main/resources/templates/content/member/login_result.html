@@ -7,9 +7,11 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
 </head>
 <body>
     <th:block th:if="${session.loginInfo == null}">
+        <input type="hidden" id="inputId" th:value="${memberVO.memberId}">
         <script>
+            const memberId = document.querySelector("#inputId").value;
             alert('아이디와 비밀번호를 확인하세요.');
-            location.href = '/member/loginForm';
+            location.href = `/member/loginForm?memberId=${memberId}`;
         </script>
     </th:block>
     <th:block th:if="${session.loginInfo != null}">

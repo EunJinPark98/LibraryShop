@@ -31,7 +31,7 @@ public class MemberController {
     }
 
     @GetMapping("/loginForm")
-    public String loginForm(){
+    public String loginForm(MemberVO memberVO){
         return "/content/member/login";
     }
 
@@ -41,7 +41,7 @@ public class MemberController {
         if(loginInfo != null){
             session.setAttribute("loginInfo", loginInfo);
         }
-        session.setAttribute("inputId", memberVO.getMemberId());
+        //session.setAttribute("inputId", memberVO.getMemberId());
         return "content/member/login_result";
     }
 
