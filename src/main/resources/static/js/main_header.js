@@ -68,14 +68,17 @@ function idCheck(){
             alert('사용 가능한 아이디입니다.');
             document.querySelector('#joinBtn').disabled = false;
         }else{
-            alert('중복된 아이디입니다.');
+            alert('사용 불가능한 아이디입니다.');
         }
     })
     .catch(err=>{
     });
 }
 
-
+//가입버튼 비활성화
+function setDisabled(){
+    document.querySelector('#joinBtn').disabled = true;
+}
 
 //회원 가입 모달창 닫힐 때 마다 실행
 const joinModal = document.querySelector('#join-modal');
