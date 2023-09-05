@@ -84,5 +84,6 @@ function setDisabled(){
 const joinModal = document.querySelector('#join-modal');
 joinModal.addEventListener('hidden.bs.modal', event => {
     document.querySelector('#joinForm').reset(); 
+    document.querySelector('#joinBtn').disabled = true;
 })
 
