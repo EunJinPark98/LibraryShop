@@ -8,7 +8,30 @@
 </head>
 <body>
     <th:block layout:fragment="content">
-        상품등록페이지
+        <h3>상품 등록</h3>
+        <form action="">
+            <div class="col-md-4 mt-2 mb-2">
+                <label for="cateName" class="form-label">카테고리</label>
+                <select id="cateName" class="form-select">
+                  <option value="CATE_001" selected>IT/인터넷</option>
+                  <option value="CATE_002">에세이</option>
+                  <option value="CATE_003">자기계발</option>
+                </select>
+              </div>
+            <div class="col-md-8 mb-2">
+                <label for="itemName" class="form-label">상품명</label>
+                <input type="text" class="form-control" id="itemName" name="itemName">
+            </div>
+            <div class="col-md-8 mb-2">
+                <label for="itemPrice" class="form-label">상품가격</label>
+                <input type="number" class="form-control" id="itemCode" name="itemPrice">
+            </div>
+            <div class="col-md-8 mb-2">
+                <label for="itemIntro" class="form-label">설명</label>
+                <textarea name="itemIntro" class="form-control" id="itemIntro" cols="30" rows="10"></textarea>
+            </div>
+            <input type="submit" value="등록" class="btn btn-primary">
+        </form>
     </th:block>
 </body>
 </html>

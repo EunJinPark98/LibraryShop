@@ -41,7 +41,6 @@ public class MemberController {
         if(loginInfo != null){
             session.setAttribute("loginInfo", loginInfo);
         }
-        //session.setAttribute("inputId", memberVO.getMemberId());
         return "content/member/login_result";
     }
 

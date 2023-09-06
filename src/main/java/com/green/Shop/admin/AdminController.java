@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class controller {
+public class AdminController {
 
     //상품 등록 페이지로 이동
     @GetMapping("/regItemForm")
