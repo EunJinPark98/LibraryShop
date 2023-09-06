@@ -8,30 +8,36 @@
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h3>상품 등록</h3>
-        <form action="">
-            <div class="col-md-4 mt-2 mb-2">
-                <label for="cateCode" class="form-label">카테고리</label>
-                <select id="cateCode" class="form-select">
-                    <option th:each="cate : ${cateList}" value="${cate.cateCode}">[[${cate.cateName}]]</option>
-                </select>
-              </div>
-            <div class="col-md-8 mb-2">
-                <label for="itemName" class="form-label">상품명</label>
-                <input type="text" class="form-control" id="itemName" name="itemName">
+        <div class="row">
+            <div class="col"><h3>상품 등록</h3></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form action="/admin/regItem" method="post">
+                    <div class="col-md-4 mt-4 mb-2">
+                        <label for="cateCode" class="form-label">카테고리</label>
+                        <select name="cateCode" id="cateCode" class="form-select">
+                            <option th:each="cate : ${cateList}" th:value="${cate.cateCode}">[[${cate.cateName}]]</option>
+                        </select>
+                      </div>
+                    <div class="col-md-8 mb-2">
+                        <label for="itemName" class="form-label">상품명</label>
+                        <input type="text" class="form-control" id="itemName" name="itemName">
+                    </div>
+                    <div class="col-md-8 mb-2">
+                        <label for="itemPrice" class="form-label">상품가격</label>
+                        <input type="number" class="form-control" id="itemPrice" name="itemPrice">
+                    </div>
+                    <div class="col-md-8 mb-2">
+                        <label for="itemIntro" class="form-label">설명</label>
+                        <textarea name="itemIntro" class="form-control" id="itemIntro" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="col-md">
+                        <input type="submit" value="등록" class="btn btn-primary">
+                    </div>
+                </form>
             </div>
-            <div class="col-md-8 mb-2">
-                <label for="itemPrice" class="form-label">상품가격</label>
-                <input type="number" class="form-control" id="itemCode" name="itemPrice">
-            </div>
-            <div class="col-md-8 mb-2">
-                <label for="itemIntro" class="form-label">설명</label>
-                <textarea name="itemIntro" class="form-control" id="itemIntro" cols="30" rows="10"></textarea>
-            </div>
-            <div class="col-md">
-                <input type="submit" value="등록" class="btn btn-primary" disabled>
-            </div>
-        </form>
+        </div>
     </th:block>
 </body>
 </html>

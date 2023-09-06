@@ -18,8 +18,8 @@
             , ITEM_INTRO
             , CATE_CODE
         ) VALUES (
-            SELECT 'ITEM_'|| LPAD(NVL(MAX(TO_NUMBER(SUBSTR(ITEM_CODE, 6))), 0) + 1, 3 ,'0')
-            , #{itemCode}
+            (SELECT 'ITEM_'|| LPAD(NVL(MAX(TO_NUMBER(SUBSTR(ITEM_CODE, 6))), 0) + 1, 3 ,'0')
+                FROM SHOP_ITEM)
             , #{itemName}
             , #{itemPrice}
             , #{itemIntro}
@@ -27,5 +27,15 @@
         )
     </insert>
 
+    <!--모든 상품 목록 조회-->
+    <select id="selectItemList" resultMap="itemMapper.item">
+        SELECT ITEM_CODE
+            , ITEM_NAME
+            , ITEM_PRICE
+            , ITEM_STOCK
+            , ITEM_STATUS
+        FROM SHOP_ITEM
+        ORDER BY ITEM_CODE DESC
+    </select>
 
 </mapper>

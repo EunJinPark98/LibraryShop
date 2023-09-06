@@ -16,3 +16,29 @@
     font-size: 0.8rem;
     margin-top: -1px;
 }
+
+.list-group-item.active{
+    background-color: #418566;
+    border-color: #418566;
+}
+
+.table-list-head{
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: #418566;
+    border-color: #418566;
+}
+
+.btn-primary{
+    background-color: #d1e7dd;
+    border-color: #d1e7dd;
+    color: #333;
+}
+
+.table-list > thead td{
+    background-color: #418566;
+    border-color: #418566;
+    color: #fff;
+}
