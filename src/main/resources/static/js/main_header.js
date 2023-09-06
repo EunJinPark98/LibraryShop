@@ -10,7 +10,7 @@ function openPost(){
 
 //회원가입 시 데이터 유효성 검사
 function joinValidate(){
-
+    
     const joinForm = document.querySelector('#joinForm');       //form 안에 요소들은 name으로 접근가능!
 
     if(joinForm.memberId.value == ''){
@@ -24,17 +24,19 @@ function joinValidate(){
     // 정규식 테스트
     var telRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
     const tel = joinForm.memberTels[0].value + '-' + joinForm.memberTels[1].value + '-' + joinForm.memberTels[2].value;
-
     if(!(telRegex.test(tel))){
         inputInvalidate('#tel-error-div', '연락처를 다시 입력해주세요.');
         return;
     }
 
     var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-    
+    const email = joinForm.memberEmails[0].value + joinForm.memberEmails[1].value
+    if(!(emailRegex.test(email))){
+        inputInvalidate('#email-error-div', '연락처를 다시 입력해주세요.');
+        return;
+    }
 
     joinForm.submit();
-
 }
 
 //validate 실패 시 메세지 설정
