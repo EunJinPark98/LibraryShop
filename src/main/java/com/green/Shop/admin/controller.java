@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class controller {
 
-    @GetMapping("/regItem")
-    public String regItem(){
-        return "";
+    //상품 등록 페이지로 이동
+    @GetMapping("/regItemForm")
+    public String regItemForm(){
+        return "content/admin/reg_item";
     }
 }
