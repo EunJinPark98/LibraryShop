@@ -15,9 +15,10 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
         </script>
     </th:block>
     <th:block th:if="${session.loginInfo != null}">
+        <input type="hidden" id="roll" th:value="${session.loginInfo.memberRoll}">
         <script>
-            alert('반갑습니다.');
-            location.href = '/';
+            const memberRoll = document.querySelector('#roll');
+            location.href = memberRoll == 'USER' ? '/item/main' : '/admin/regItem';
         </script>
     </th:block>
 </body>
