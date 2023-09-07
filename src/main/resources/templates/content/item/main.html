@@ -8,7 +8,17 @@
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h3>세상에 좋은 책이 너무 많다..!</h3>
+        <div class="row row-cols5 g-4">
+            <div class="col" th:each="displayItem : ${displayItemList}">
+                <div class="card" style="width: 18rem;">
+                    <img th:src="'/images/' + ${displayItem.itemCode} + '.jpg'" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">[[${displayItem.itemName}]]</h5>
+                        <p class="card-text">[[${displayItem.itemIntro}]]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </th:block>
 </body>
 </html>

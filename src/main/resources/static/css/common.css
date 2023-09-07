@@ -49,3 +49,9 @@
     align-items: center;
     margin-right: 20px;
 }
+
+.navbar {
+    background-color: #d1e7dd !important;
+    border-color: #d1e7dd !important;
+    border-radius: 15px !important;
+}

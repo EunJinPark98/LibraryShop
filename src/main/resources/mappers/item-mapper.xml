@@ -17,5 +17,14 @@
         <result column="ITEM_STATUS" property="itemStatus"/>
     </resultMap>
 
+    <!--판매아이템 조회-->
+    <select id="displayItemList" resultMap="item">
+        SELECT ITEM_CODE
+            , ITEM_NAME
+            , ITEM_PRICE
+            , ITEM_INTRO
+        FROM SHOP_ITEM
+        WHERE ITEM_STATUS = 1
+    </select>
 
 </mapper>

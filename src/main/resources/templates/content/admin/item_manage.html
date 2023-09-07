@@ -44,15 +44,15 @@
                                 <div class="col-4 ">
                                     <label for="searchItemStatus" class="form-label" style="margin-right: 10px;">상품상태&nbsp;</label>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="0">
+                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="0" th:checked="${itemSearchVO.searchItemStatus != null and #lists.contains(itemSearchVO.searchItemStatus, 0)}">
                                         <label class="form-check-label" for="searchItemStatus">준비</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="1">
+                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="1" th:checked="${itemSearchVO.searchItemStatus != null and #lists.contains(itemSearchVO.searchItemStatus, 1)}">
                                         <label class="form-check-label" for="searchItemStatus">판매</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="2">
+                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="2" th:checked="${itemSearchVO.searchItemStatus != null and #lists.contains(itemSearchVO.searchItemStatus, 2)}">
                                         <label class="form-check-label" for="searchItemStatus">매진</label>
                                     </div>
                                 </div>
@@ -112,15 +112,15 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 0}" onchange="updateStatus(0)">
+                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 0}" th:onchange="updateStatus(0, [[${item.itemCode}]])">
                                                     <label class="form-check-label">준비</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 1}" onchange="updateStatus(1)">
+                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 1}" th:onchange="updateStatus(1, [[${item.itemCode}]])">
                                                     <label class="form-check-label">판매</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 2}" onchange="updateStatus(2)">
+                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 2}" th:onchange="updateStatus(2, [[${item.itemCode}]])">
                                                     <label class="form-check-label">매진</label>
                                                 </div>
                                             </div>
