@@ -8,13 +8,23 @@
 </head>
 <body>
     <th:block layout:fragment="content">
+        <style>
+            .card .bookImg{
+                width: 100%;
+                height: 17rem;
+            }
+            .card .bookImg img{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
         <div class="row row-cols5 g-4">
             <div class="col" th:each="displayItem : ${displayItemList}">
-                <div class="card" style="width: 18rem;">
-                    <img th:src="'/images/' + ${displayItem.itemCode} + '.jpg'" class="card-img-top" alt="...">
+                <div class="card" style="width: 12rem;">
+                    <p class="bookImg"><img th:src="'/images/' + ${displayItem.itemCode} + '.jpg'" class="card-img-top" alt="..."></p>
                     <div class="card-body">
                         <h5 class="card-title">[[${displayItem.itemName}]]</h5>
-                        <p class="card-text">[[${displayItem.itemIntro}]]</p>
+                        <p class="card-text">[[${displayItem.itemPrice}]]</p>
                     </div>
                 </div>
             </div>
