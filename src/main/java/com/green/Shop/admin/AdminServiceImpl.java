@@ -1,6 +1,7 @@
 package com.green.Shop.admin;
 
 import com.green.Shop.item.vo.CateVO;
+import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<ItemVO> selectItemList() {
-        return sqlSession.selectList("adminMapper.selectItemList");
+    public List<ItemVO> selectItemList(ItemSearchVO itemSearchVO) {
+        return sqlSession.selectList("adminMapper.selectItemList", itemSearchVO);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.green.Shop.admin;
 
+import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
 import jakarta.annotation.Resource;
 import org.springframework.boot.Banner;
@@ -31,9 +32,10 @@ public class AdminController {
     }
 
     //상품관리 페이지로 이동
-    @GetMapping("/itemManage")
-    public String itemManageForm(Model model){
-        model.addAttribute("itemList", adminService.selectItemList());
+    @RequestMapping("/itemManage")
+    public String itemManageForm(ItemSearchVO itemSearchVO, Model model){
+        model.addAttribute("itemList", adminService.selectItemList(itemSearchVO));
+        model.addAttribute("cateList", adminService.selectCateList());
         return "/content/admin/item_manage";
     }
 

@@ -11,23 +11,26 @@
         <div class="row">
             <div class="col">
                 <div class="row mt-3 mb-3">
-                    <div class="col"><h3>상품관리</h3></div>
+                    <div class="col"><h3>상품 관리</h3></div>
                 </div>
                 <!-- 검색 -->
                 <div class="row mb-3">
                     <div class="col">
-                        <form action="" method="post">
+                        <form action="/admin/itemManage" method="post">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div class="mb-3">
                                         <label for="cateCode" class="form-label">카테고리</label>
-                                        <input type="text" class="form-control" id="cateCode">
+                                        <select class="form-select" name="searchCateCode">
+                                            <option value="">전체</option>
+                                            <option th:each="cate : ${cateList}" th:value="${cate.cateCode}">[[${cate.cateName}]]</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-7">
                                     <div class="mb-3">
-                                        <label for="itemName" class="form-label">검색 내용</label>
-                                        <input type="text" class="form-control" id="itemName">
+                                        <label for="searchItemName" class="form-label">상품명</label>
+                                        <input type="text" class="form-control" id="itemName" name="searchItemName">
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -38,38 +41,36 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-4">
-                                    <label for="" class="form-label" style="margin-right: 20px;">상품상태&nbsp;</label>
+                                <div class="col-4 ">
+                                    <label for="searchItemStatus" class="form-label" style="margin-right: 10px;">상품상태&nbsp;</label>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">준비</label>
-                                      </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">판매</label>
+                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="0">
+                                        <label class="form-check-label" for="searchItemStatus">준비</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">매진</label>
+                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="1">
+                                        <label class="form-check-label" for="searchItemStatus">판매</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="searchItemStatus" value="2">
+                                        <label class="form-check-label" for="searchItemStatus">매진</label>
                                     </div>
                                 </div>
                                 <div class="col-8">
                                     <div class="mb-3 search_stock_style">
-                                        <label for="cateCode" class="form-label" style="margin-right: 10px;">재고</label>
-                                        <input type="number" class="form-control" id="cateCode" style="width: 30%; margin-right: 10px; margin-left: 10px;">
-                                        - <input type="number" class="form-control" id="cateCode" style="width: 30%; margin-right: 10px; margin-left: 10px;">
+                                        <label for="itemStock" class="form-label" style="margin-right: 10px;">재고</label>
+                                        <input type="number" class="form-control" name="searchItemStockMin" style="width: 30%; margin-right: 10px; margin-left: 10px;">
+                                        - <input type="number" class="form-control" name="searchItemStockMax" style="width: 30%; margin-right: 10px; margin-left: 10px;">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </form>
+                        </form>
                     </div>
                 </div>
                 <!-- 상품 목록 -->
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-striped text-center table-list align-middle ">
+                        <table class="table table-hover table-striped text-center table-list align-middle">
                             <colgroup>
                                 <col style="width: 10%;">
                                 <col style="width: 15%;">

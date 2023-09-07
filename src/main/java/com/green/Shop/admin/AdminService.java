@@ -1,6 +1,7 @@
 package com.green.Shop.admin;
 
 import com.green.Shop.item.vo.CateVO;
+import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface AdminService {
     public void insertItem(ItemVO itemVO);
 
     //전체 상품 조회
-    public List<ItemVO> selectItemList();
+    public List<ItemVO> selectItemList(ItemSearchVO itemSearchVO);
 
     //재고 수정
     public void updateStock(ItemVO itemVO);

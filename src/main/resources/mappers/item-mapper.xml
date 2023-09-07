@@ -17,4 +17,5 @@
         <result column="ITEM_STATUS" property="itemStatus"/>
     </resultMap>
 
+
 </mapper>

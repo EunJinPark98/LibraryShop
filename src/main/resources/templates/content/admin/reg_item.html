@@ -19,7 +19,7 @@
                         <select name="cateCode" id="cateCode" class="form-select">
                             <option th:each="cate : ${cateList}" th:value="${cate.cateCode}">[[${cate.cateName}]]</option>
                         </select>
-                      </div>
+                    </div>
                     <div class="col-md-8 mb-2">
                         <label for="itemName" class="form-label">상품명</label>
                         <input type="text" class="form-control" id="itemName" name="itemName">

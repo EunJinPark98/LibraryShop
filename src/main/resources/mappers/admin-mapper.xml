@@ -35,6 +35,25 @@
             , ITEM_STOCK
             , ITEM_STATUS
         FROM SHOP_ITEM
+        WHERE 1 = 1
+        <if test='searchCateCode != null and !searchCateCode.equals("")'>
+            AND CATE_CODE = #{searchCateCode}
+        </if>
+        <if test="searchItemStatus != null">
+            AND ITEM_STATUS IN
+            <foreach collection="searchItemStatus" item="itemStatus" separator="," open="(" close=")">
+                #{itemStatus}
+            </foreach>
+        </if>
+        <if test='searchItemName != null and !searchItemName.equals("")'>
+            AND UPPER(ITEM_NAME) LIKE '%'||UPPER(#{searchItemName})||'%'
+        </if>
+        <if test='searchItemStockMin != null and !searchItemStockMin.equals("")'>
+            AND ITME_STOCK &gt;= #{searchItemStockMin}
+        </if>
+        <if test='searchItemStockMax != null and !searchItemStockMax.equals("")'>
+            AND ITME_STOCK &lt;= #{searchItemStockMax}
+        </if>
         ORDER BY ITEM_CODE DESC
     </select>
 
