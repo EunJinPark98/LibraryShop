@@ -19,4 +19,7 @@ public interface AdminService {
     //재고 수정
     public void updateStock(ItemVO itemVO);
 
+    //상태 수정
+    public void updateStatus(ItemVO itemVO);
+
 }

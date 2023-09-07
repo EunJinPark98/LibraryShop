@@ -45,5 +45,11 @@
         WHERE ITEM_CODE = #{itemCode}
     </update>
 
+    <!--상품 상태 변경-->
+    <update id="updateStatus">
+        UPDATE SHOP_ITEM
+        SET ITEM_STATUS = #{itemStatus}
+        WHERE ITEM_CODE = #{itemCode}
+    </update>
 
 </mapper>

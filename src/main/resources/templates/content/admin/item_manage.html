@@ -41,6 +41,7 @@
                             </thead>
                             <tbody>
                                 <tr th:each="item, state: ${itemList}">
+                                    
                                     <td>[[${#lists.size(itemList) - state.index}]]</td>
                                     <td>[[${item.itemCode}]]</td>
                                     <td>[[${item.itemName}]]</td>
@@ -50,7 +51,7 @@
                                             <div class="row">
                                                 <div class="col-7">
                                                     <input type="number" class="form-control" th:value="${item.itemStock}" name="itemStock">
-                                                    <input type="hidden" class="form-control" th:value="${item.itemCode}" name="itemCode">
+                                                    <input type="hidden" id="itemCode"  class="form-control"  th:value="${item.itemCode}" name="itemCode">
                                                 </div>
                                                 <div class="col-5 d-grid">
                                                     <input type="submit" class="btn btn-primary" value="수정">
@@ -61,16 +62,17 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-12">
+                                               
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 0}">
+                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 0}" onchange="updateStatus(0)">
                                                     <label class="form-check-label">판매준비</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 1}">
+                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 1}" onchange="updateStatus(1)">
                                                     <label class="form-check-label">판매중</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 2}">
+                                                    <input class="form-check-input" type="radio" th:name="${'itemStatus_' + state.count}" th:checked="${item.itemStatus == 2}" onchange="updateStatus(2)">
                                                     <label class="form-check-label">매진</label>
                                                 </div>
                                             </div>
@@ -83,6 +85,7 @@
                 </div>
             </div>
         </div>
+        <script src="/js/admin/item_manage.js"></script>
     </th:block>
 </body>
 </html>

@@ -5,6 +5,7 @@ import com.green.Shop.item.vo.ItemVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -31,6 +32,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void updateStock(ItemVO itemVO) {
         sqlSession.update("adminMapper.updateStock", itemVO);
+    }
+
+    @Override
+    public void updateStatus(ItemVO itemVO) {
+        sqlSession.update("adminMapper.updateStatus", itemVO);
     }
 
 }
