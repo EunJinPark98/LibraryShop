@@ -36,6 +36,13 @@ public class AdminController {
         return "/content/admin/item_manage";
     }
 
+    //재고 수정
+    @PostMapping("/updateStock")
+    public String updateStock(ItemVO itemVO){
+        adminService.updateStock(itemVO);
+        return "redirect:/admin/itemManage";
+    }
+
 
 
 

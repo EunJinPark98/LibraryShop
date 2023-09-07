@@ -28,4 +28,9 @@ public class AdminServiceImpl implements AdminService {
         return sqlSession.selectList("adminMapper.selectItemList");
     }
 
+    @Override
+    public void updateStock(ItemVO itemVO) {
+        sqlSession.update("adminMapper.updateStock", itemVO);
+    }
+
 }

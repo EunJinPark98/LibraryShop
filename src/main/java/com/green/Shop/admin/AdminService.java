@@ -16,4 +16,7 @@ public interface AdminService {
     //전체 상품 조회
     public List<ItemVO> selectItemList();
 
+    //재고 수정
+    public void updateStock(ItemVO itemVO);
+
 }

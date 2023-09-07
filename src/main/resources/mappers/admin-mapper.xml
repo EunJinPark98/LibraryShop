@@ -38,4 +38,12 @@
         ORDER BY ITEM_CODE DESC
     </select>
 
+    <!--재고 수정-->
+    <update id="updateStock">
+        UPDATE SHOP_ITEM
+        SET ITEM_STOCK = #{itemStock}
+        WHERE ITEM_CODE = #{itemCode}
+    </update>
+
+
 </mapper>
