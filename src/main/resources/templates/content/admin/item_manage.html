@@ -23,7 +23,7 @@
                                         <label for="cateCode" class="form-label">카테고리</label>
                                         <select class="form-select" name="searchCateCode">
                                             <option value="">전체</option>
-                                            <option th:each="cate : ${cateList}" th:value="${cate.cateCode}">[[${cate.cateName}]]</option>
+                                            <option th:selected="${itemSearchVO.searchCateCode == cate.cateCode}" th:each="cate : ${cateList}" th:value="${cate.cateCode}">[[${cate.cateName}]]</option>
                                         </select>
                                     </div>
                                 </div>
@@ -59,8 +59,8 @@
                                 <div class="col-8">
                                     <div class="mb-3 search_stock_style">
                                         <label for="itemStock" class="form-label" style="margin-right: 10px;">재고</label>
-                                        <input type="number" class="form-control" name="searchItemStockMin" style="width: 30%; margin-right: 10px; margin-left: 10px;">
-                                        - <input type="number" class="form-control" name="searchItemStockMax" style="width: 30%; margin-right: 10px; margin-left: 10px;">
+                                        <input type="number" th:value="${itemSearchVO.searchItemStockMin}" class="form-control" name="searchItemStockMin" style="width: 30%; margin-right: 10px; margin-left: 10px;">
+                                        - <input type="number" th:value="${itemSearchVO.searchItemStockMax}" class="form-control" name="searchItemStockMax" style="width: 30%; margin-right: 10px; margin-left: 10px;">
                                     </div>
                                 </div>
                             </div>

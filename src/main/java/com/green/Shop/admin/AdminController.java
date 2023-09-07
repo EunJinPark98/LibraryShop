@@ -36,7 +36,6 @@ public class AdminController {
     public String itemManageForm(ItemSearchVO itemSearchVO, Model model){
         model.addAttribute("itemList", adminService.selectItemList(itemSearchVO));
         model.addAttribute("cateList", adminService.selectCateList());
-        model.addAttribute("itemSearchVO", itemSearchVO);
         return "/content/admin/item_manage";
     }
 
