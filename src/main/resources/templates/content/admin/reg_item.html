@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <form action="/admin/regItem" method="post">
+                <form action="/admin/regItem" method="post" enctype="multipart/form-data">
                     <div class="col-md-4 mt-4 mb-2">
                         <label for="cateCode" class="form-label">카테고리</label>
                         <select name="cateCode" id="cateCode" class="form-select">
@@ -32,8 +32,16 @@
                         <label for="itemIntro" class="form-label">설명</label>
                         <textarea name="itemIntro" class="form-control" id="itemIntro" cols="30" rows="10"></textarea>
                     </div>
+                    <div class="col-md-8 mb-2">
+                        <label class="form-label">메인 이미지</label>
+                        <input type="file" class="form-control" name="mainImg">
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <label class="form-label">서브 이미지</label>
+                        <input type="file" class="form-control" name="subImg" multiple>
+                    </div>
                     <div class="col-md">
-                        <input type="submit" value="등록" class="btn btn-primary">
+                        <input type="submit" value="상품 등록" class="btn btn-primary">
                     </div>
                 </form>
             </div>
