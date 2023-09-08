@@ -50,9 +50,5 @@ public class AdminServiceImpl implements AdminService {
         return sqlSession.selectOne("adminMapper.selectNextItemCode");
     }
 
-    @Override
-    public String selectNextImgCode() {
-        return sqlSession.selectOne("adminMapper.selectNextImgCode");
-    }
 
 }

@@ -77,12 +77,6 @@
         WHERE ITEM_CODE = #{itemCode}
     </update>
 
-    <!--다음 IMG_CODE 조회-->
-    <select id="selectNextImgCode" resultType="String">
-        SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(IMG_CODE, 5))), 0) + 1, 3 ,'0')
-        FROM ITEM_IMG
-    </select>
-
     <!-- 상품 이미지 등록-->
     <insert id="insertImgs">
         INSERT INTO ITEM_IMG (
@@ -92,8 +86,9 @@
             , ITEM_CODE
             , IS_MAIN
         )
-        <foreach collection="imgList" item="img" separator="UNION ALL">
-            SELECT #{img.imgCode}
+        <foreach collection="imgList" item="img" separator="UNION ALL" index="idx">
+            SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(IMG_CODE, 5))), 0) + 1 + #{idx}, 3 ,'0')
+                    FROM ITEM_IMG)
             , #{img.originFileName}
             , #{img.attachedFileName}
             , #{img.itemCode}

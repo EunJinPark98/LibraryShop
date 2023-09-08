@@ -36,23 +36,27 @@ public class AdminController {
 
     //상품 등록
     @PostMapping("/regItem")
-    public String regItem(ItemVO itemVO, MultipartFile[] img){
+    public String regItem(ItemVO itemVO, MultipartFile mainImg, MultipartFile[] subImg){
         //다음에 들어갈 코드들
         String itemCode = adminService.selectNextItemCode();
-        String imgCode = adminService.selectNextImgCode();
 
-        //상품 이미지 등록
-        ImgVO vo = UploadUtil.uploadFile(img);          //첨부파일 기능
-        vo.setImgCode(imgCode);
-        vo.setItemCode(itemCode);
+        //첨부파일 기능 단일
+        ImgVO vo = UploadUtil.uploadFile(mainImg);          //첨부파일 기능
 
-        List<ImgVO> imgList = new ArrayList<>();
+        //첨부파일 기능 다중
+        List<ImgVO> imgList = UploadUtil.multiFileUpload(subImg);
         imgList.add(vo);
+
+        for(ImgVO imgVO : imgList){
+            imgVO.setItemCode(itemCode);
+        }
+
         itemVO.setImgList(imgList);
 
         //상품 등록
         itemVO.setItemCode(itemCode);
         adminService.insertItem(itemVO);
+
         adminService.insertImgs(itemVO);
 
         return "redirect:/admin/regItemForm";

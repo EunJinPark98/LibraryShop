@@ -30,6 +30,4 @@ public interface AdminService {
     //다음 ITEM_CDOE 조회
     public String selectNextItemCode();
 
-    //다음 IMG_CODE 조회
-    public String selectNextImgCode();
 }

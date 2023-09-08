@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UploadUtil {
@@ -35,9 +37,15 @@ public class UploadUtil {
     }
 
     //다중 파일 업로드
-    public static void multiFileUpload(MultipartFile[] imgs){
+    public static List<ImgVO> multiFileUpload(MultipartFile[] imgs){
+        List<ImgVO> ImgList = new ArrayList<>();
         for(MultipartFile img : imgs){
-            uploadFile(img);
+            ImgVO vo = uploadFile(img);
+            if(vo != null) {
+                vo.setIsMain("N");
+                ImgList.add(vo);
+            }
         }
+        return ImgList;
     }
 }
