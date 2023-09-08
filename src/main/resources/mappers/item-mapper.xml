@@ -17,6 +17,14 @@
         <result column="ITEM_STATUS" property="itemStatus"/>
     </resultMap>
 
+    <resultMap id="img" type="com.green.Shop.item.vo.ImgVO">
+        <result column="IMG_CODE" property="imgCode"/>
+        <result column="ORIGIN_FILE_NAME" property="originFileName"/>
+        <result column="ATTACHED_FILE_NAME" property="attachedFileName"/>
+        <result column="ITEM_CODE" property="itemCode"/>
+        <result column="IS_MAIN" property="isMain"/>
+    </resultMap>
+
     <!--판매아이템 조회-->
     <select id="displayItemList" resultMap="item">
         SELECT ITEM_CODE

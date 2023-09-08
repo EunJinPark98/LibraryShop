@@ -2,6 +2,7 @@ package com.green.Shop.admin;
 
 import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
+import com.green.Shop.util.ConstantVariable;
 import jakarta.annotation.Resource;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
@@ -26,8 +32,24 @@ public class AdminController {
 
     //상품 등록
     @PostMapping("/regItem")
-    public String regItem(ItemVO itemVO){
-        adminService.insertItem(itemVO);
+    public String regItem(MultipartFile mainImg){
+        //첨부파일
+        String originFileName = mainImg.getOriginalFilename();
+        //첨부파일 저장 위치
+        //첨부될 파일 명 설정 (랜덤명 + 확장자)
+        String uuid = UUID.randomUUID().toString();
+        String extension = originFileName.substring(originFileName.lastIndexOf("."));
+        String attachedFileName = uuid + extension;
+
+        try {
+            //파일 첨부
+            File file = new File(ConstantVariable.UPLOAD_PATH + attachedFileName);
+            mainImg.transferTo(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        //adminService.insertItem(itemVO);
         return "redirect:/admin/regItemForm";
     }
 
