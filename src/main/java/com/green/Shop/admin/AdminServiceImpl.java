@@ -40,4 +40,19 @@ public class AdminServiceImpl implements AdminService {
         sqlSession.update("adminMapper.updateStatus", itemVO);
     }
 
+    @Override
+    public void insertImgs(ItemVO itemVO) {
+        sqlSession.insert("adminMapper.insertImgs", itemVO);
+    }
+
+    @Override
+    public String selectNextItemCode() {
+        return sqlSession.selectOne("adminMapper.selectNextItemCode");
+    }
+
+    @Override
+    public String selectNextImgCode() {
+        return sqlSession.selectOne("adminMapper.selectNextImgCode");
+    }
+
 }

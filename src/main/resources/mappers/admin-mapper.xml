@@ -2,11 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="adminMapper">
+
     <!--상품 카테고리 조회-->
     <select id="selectCateList" resultMap="itemMapper.category">
         SELECT CATE_CODE
             , CATE_NAME
         FROM ITEM_CATEGORY
+    </select>
+
+    <!--다음 ITEM_CODE 조회-->
+    <select id="selectNextItemCode" resultType="String">
+        SELECT 'ITEM_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(ITEM_CODE, 6))), 0) + 1, 3 ,'0')
+        FROM SHOP_ITEM
     </select>
 
     <!--상품 등록-->
@@ -18,8 +25,7 @@
             , ITEM_INTRO
             , CATE_CODE
         ) VALUES (
-            (SELECT 'ITEM_'|| LPAD(NVL(MAX(TO_NUMBER(SUBSTR(ITEM_CODE, 6))), 0) + 1, 3 ,'0')
-                FROM SHOP_ITEM)
+            #{itemCode}
             , #{itemName}
             , #{itemPrice}
             , #{itemIntro}
@@ -71,4 +77,27 @@
         WHERE ITEM_CODE = #{itemCode}
     </update>
 
+    <insert id="insertImgs">
+        INSERT INTO ITEM_IMG (
+            IMG_CODE
+            , ORIGIN_FILE_NAME
+            , ATTACHED_FILE_NAME
+            , ITEM_CODE
+            , IS_MAIN
+        )
+        <foreach collection="imgList" item="img" separator="UNION ALL">
+            SELECT #{img.imgCode}
+            , #{img.originFileName}
+            , #{img.attachedFileName}
+            , #{img.itemCode}
+            , #{img.isMain}
+            FROM DUAL
+        </foreach>
+    </insert>
+
+    <!--다음 IMG_CODE 조회-->
+    <select id="selectNextImgCode" resultType="String">
+        SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(IMG_CODE, 5))), 0) + 1, 3 ,'0')
+        FROM ITEM_IMG;
+    </select>
 </mapper>

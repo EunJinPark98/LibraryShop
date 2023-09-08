@@ -2,6 +2,8 @@ package com.green.Shop.item.vo;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class ItemVO {
     private String itemCode;
@@ -11,4 +13,6 @@ public class ItemVO {
     private int itemStock;
     private String cateCode;
     private int itemStatus;
+
+    private List<ImgVO> imgList;
 }

@@ -1,6 +1,7 @@
 package com.green.Shop.admin;
 
 import com.green.Shop.item.vo.CateVO;
+import com.green.Shop.item.vo.ImgVO;
 import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
 
@@ -23,4 +24,12 @@ public interface AdminService {
     //상태 수정
     public void updateStatus(ItemVO itemVO);
 
+    //상품 이미지 등록
+    public void insertImgs(ItemVO itemVO);
+
+    //다음 ITEM_CDOE 조회
+    public String selectNextItemCode();
+
+    //다음 IMG_CODE 조회
+    public String selectNextImgCode();
 }

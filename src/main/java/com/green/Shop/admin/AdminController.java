@@ -1,5 +1,6 @@
 package com.green.Shop.admin;
 
+import com.green.Shop.item.vo.ImgVO;
 import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
 import com.green.Shop.util.ConstantVariable;
@@ -15,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -35,20 +38,31 @@ public class AdminController {
     public String regItem(MultipartFile mainImg){
         //첨부파일
         String originFileName = mainImg.getOriginalFilename();
-        //첨부파일 저장 위치
-        //첨부될 파일 명 설정 (랜덤명 + 확장자)
-        String uuid = UUID.randomUUID().toString();
-        String extension = originFileName.substring(originFileName.lastIndexOf("."));
+        //첨부될 파일 명 설정
+        String uuid = UUID.randomUUID().toString(); //랜덤
+        String extension = originFileName.substring(originFileName.lastIndexOf(".")); //확장자
         String attachedFileName = uuid + extension;
-
         try {
-            //파일 첨부
             File file = new File(ConstantVariable.UPLOAD_PATH + attachedFileName);
             mainImg.transferTo(file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+        //다음에 들어갈 코드들 (001 002 ... 증가 코드이기 때문에 따로 쿼리 만듦)
+        String imgCode = adminService.selectNextImgCode();
+        String itemCode = adminService.selectNextItemCode();
+
+        //상품 이미지 등록
+        List<ImgVO> imgList = new ArrayList<>();
+        ImgVO imgVO = new ImgVO();
+        imgVO.setOriginFileName(originFileName);
+        imgVO.setAttachedFileName(attachedFileName);
+        imgVO.setIsMain("Y");
+        imgVO.setImgCode(imgCode);
+        imgVO.setItemCode(itemCode);
+
+        //itemVO.setItemCode(itemCode);
         //adminService.insertItem(itemVO);
         return "redirect:/admin/regItemForm";
     }
