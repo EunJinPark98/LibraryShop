@@ -4,6 +4,7 @@ import com.green.Shop.item.vo.ImgVO;
 import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
 import com.green.Shop.util.ConstantVariable;
+import com.green.Shop.util.UploadUtil;
 import jakarta.annotation.Resource;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -35,35 +36,25 @@ public class AdminController {
 
     //상품 등록
     @PostMapping("/regItem")
-    public String regItem(MultipartFile mainImg){
-        //첨부파일
-        String originFileName = mainImg.getOriginalFilename();
-        //첨부될 파일 명 설정
-        String uuid = UUID.randomUUID().toString(); //랜덤
-        String extension = originFileName.substring(originFileName.lastIndexOf(".")); //확장자
-        String attachedFileName = uuid + extension;
-        try {
-            File file = new File(ConstantVariable.UPLOAD_PATH + attachedFileName);
-            mainImg.transferTo(file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        //다음에 들어갈 코드들 (001 002 ... 증가 코드이기 때문에 따로 쿼리 만듦)
-        String imgCode = adminService.selectNextImgCode();
+    public String regItem(ItemVO itemVO, MultipartFile[] img){
+        //다음에 들어갈 코드들
         String itemCode = adminService.selectNextItemCode();
+        String imgCode = adminService.selectNextImgCode();
 
         //상품 이미지 등록
-        List<ImgVO> imgList = new ArrayList<>();
-        ImgVO imgVO = new ImgVO();
-        imgVO.setOriginFileName(originFileName);
-        imgVO.setAttachedFileName(attachedFileName);
-        imgVO.setIsMain("Y");
-        imgVO.setImgCode(imgCode);
-        imgVO.setItemCode(itemCode);
+        ImgVO vo = UploadUtil.uploadFile(img);          //첨부파일 기능
+        vo.setImgCode(imgCode);
+        vo.setItemCode(itemCode);
 
-        //itemVO.setItemCode(itemCode);
-        //adminService.insertItem(itemVO);
+        List<ImgVO> imgList = new ArrayList<>();
+        imgList.add(vo);
+        itemVO.setImgList(imgList);
+
+        //상품 등록
+        itemVO.setItemCode(itemCode);
+        adminService.insertItem(itemVO);
+        adminService.insertImgs(itemVO);
+
         return "redirect:/admin/regItemForm";
     }
 

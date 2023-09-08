@@ -13,6 +13,5 @@ public class ItemVO {
     private int itemStock;
     private String cateCode;
     private int itemStatus;
-
     private List<ImgVO> imgList;
 }
