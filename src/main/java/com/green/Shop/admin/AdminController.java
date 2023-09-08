@@ -57,8 +57,6 @@ public class AdminController {
         itemVO.setItemCode(itemCode);
         adminService.insertItem(itemVO);
 
-        adminService.insertImgs(itemVO);
-
         return "redirect:/admin/regItemForm";
     }
 
