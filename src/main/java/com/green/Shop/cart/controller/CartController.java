@@ -18,12 +18,17 @@ public class CartController {
     private CartService cartService;
 
     //장바구니 아이템 추가
+    @ResponseBody
     @PostMapping("/insertCart")
-    public String insertCart(CartVO cartVO, HttpSession session){
+    public int insertCart(CartVO cartVO, HttpSession session){
         MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
         cartVO.setMemberId(loginInfo.getMemberId());
-        cartService.insertCart(cartVO);
-        return "/content/cart/insert_cart_result";
+        return cartService.insertCart(cartVO);
+    }
+
+    @GetMapping("/list")
+    public String cartList(){
+        return "/content/cart/cart_list";
     }
 
 

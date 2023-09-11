@@ -11,7 +11,7 @@ public class CartServiceImpl implements CartService{
     private SqlSessionTemplate sqlSession;
 
     @Override
-    public void insertCart(CartVO cartVO) {
-        sqlSession.insert("cartMapper.insertCart", cartVO);
+    public int insertCart(CartVO cartVO) {
+        return sqlSession.insert("cartMapper.insertCart", cartVO);
     }
 }
