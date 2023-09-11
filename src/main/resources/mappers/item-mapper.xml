@@ -3,22 +3,23 @@
 
 <mapper namespace="itemMapper">
     <resultMap id="category" type="com.green.Shop.item.vo.CateVO">
-        <result column="CATE_CODE" property="cateCode"/>
+        <id column="CATE_CODE" property="cateCode"/>
         <result column="CATE_NAME" property="cateName"/>
     </resultMap>
 
     <resultMap id="item" type="com.green.Shop.item.vo.ItemVO">
-        <result column="ITEM_CODE" property="itemCode"/>
+        <id column="ITEM_CODE" property="itemCode"/>
         <result column="ITEM_NAME" property="itemName"/>
         <result column="ITEM_PRICE" property="itemPrice"/>
         <result column="ITEM_INTRO" property="itemIntro"/>
         <result column="ITEM_STOCK" property="itemStock"/>
         <result column="CATE_CODE" property="cateCode"/>
         <result column="ITEM_STATUS" property="itemStatus"/>
+        <collection property="imgList" resultMap="img"/>
     </resultMap>
 
     <resultMap id="img" type="com.green.Shop.item.vo.ImgVO">
-        <result column="IMG_CODE" property="imgCode"/>
+        <id column="IMG_CODE" property="imgCode"/>
         <result column="ORIGIN_FILE_NAME" property="originFileName"/>
         <result column="ATTACHED_FILE_NAME" property="attachedFileName"/>
         <result column="ITEM_CODE" property="itemCode"/>
@@ -27,12 +28,15 @@
 
     <!--판매아이템 조회-->
     <select id="displayItemList" resultMap="item">
-        SELECT ITEM_CODE
+        SELECT ITEM.ITEM_CODE
             , ITEM_NAME
             , ITEM_PRICE
-            , ITEM_INTRO
-        FROM SHOP_ITEM
-        WHERE ITEM_STATUS = 1
+            , ATTACHED_FILE_NAME
+        FROM SHOP_ITEM ITEM, ITEM_IMG IMG
+        WHERE ITEM.ITEM_CODE = IMG.ITEM_CODE
+        AND IS_MAIN = 'Y'
+        AND ITEM_STATUS = 1
+        ORDER BY ITEM.ITEM_CODE DESC
     </select>
 
 </mapper>
