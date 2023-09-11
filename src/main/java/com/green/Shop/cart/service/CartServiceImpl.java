@@ -5,6 +5,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("cartService")
 public class CartServiceImpl implements CartService{
     @Autowired
@@ -13,5 +15,10 @@ public class CartServiceImpl implements CartService{
     @Override
     public int insertCart(CartVO cartVO) {
         return sqlSession.insert("cartMapper.insertCart", cartVO);
+    }
+
+    @Override
+    public List<CartVO> selectCartList(String memeberId) {
+        return sqlSession.selectList("cartMapper.selectCartList", memeberId);
     }
 }

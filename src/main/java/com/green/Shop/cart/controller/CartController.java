@@ -6,6 +6,7 @@ import com.green.Shop.member.vo.MemberVO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,9 @@ public class CartController {
     }
 
     @GetMapping("/list")
-    public String cartList(){
+    public String cartList(HttpSession session, Model model){
+        MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+        model.addAttribute("cartList", cartService.selectCartList(loginInfo.getMemberId()));
         return "/content/cart/cart_list";
     }
 

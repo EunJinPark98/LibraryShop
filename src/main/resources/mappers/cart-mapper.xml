@@ -2,12 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cartMapper">
-    <resultMap id="category" type="com.green.Shop.item.vo.CateVO">
+    <resultMap id="cart" type="com.green.Shop.cart.vo.CartVO">
         <id column="CART_CODE" property="cartCode"/>
         <result column="ITEM_CODE" property="itemCode"/>
         <result column="CART_CNT" property="cartCnt"/>
         <result column="MEMBER_ID" property="memberId"/>
         <result column="PUT_DATE" property="putDate"/>
+        <association property="itemVO" resultMap="itemMapper.item"/>
     </resultMap>
 
     <!--장바구니 담기-->
@@ -25,5 +26,21 @@
             , #{memberId}
         )
     </insert>
+
+    <!--장바구니 목록-->
+    <select id="selectCartList" resultMap="cart">
+        SELECT CART_CODE
+            , ATTACHED_FILE_NAME
+            , ITEM_NAME
+            , ITEM_PRICE
+            , CART_CNT
+        FROM SHOP_CART CART, SHOP_ITEM ITEM, ITEM_IMG IMG
+        WHERE CART.ITEM_CODE = ITEM.ITEM_CODE
+        AND ITEM.ITEM_CODE = IMG.ITEM_CODE
+        AND CART.MEMBER_ID = #{memberId}
+        AND IS_MAIN = 'Y'
+        ORDER BY PUT_DATE DESC
+    </select>
+
 
 </mapper>
