@@ -26,7 +26,12 @@
                             <div class="col"><h5>판매가</h5>[[${item.itemPrice}]]</div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col"><h5>수량</h5><input type="number" class="form-control" value="1"></div>
+                            <div class="col"><h5>수량</h5>
+                                <form id="insert-cart-form" action="/cart/insertCart" method="post" >
+                                    <input type="number" class="form-control" value="1" name="cartCnt">
+                                    <input type="hidden" th:value="${item.itemCode}" name="itemCode">
+                                </form>
+                            </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col"><h5>총금액</h5>[[${item.itemPrice}]]</div>
@@ -62,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <script src="/js/cart/cart_list"></script>
+        <script src="/js/cart/cart_list.js"></script>
     </th:block>
 </body>
 </html>
