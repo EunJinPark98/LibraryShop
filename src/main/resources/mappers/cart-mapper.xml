@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminMapper">
+    <resultMap id="category" type="com.green.Shop.item.vo.CateVO">
+        <id column="CART_CODE" property="cartCode"/>
+        <result column="ITEM_CODE" property="itemCode"/>
+        <result column="CART_CNT" property="cartCnt"/>
+        <result column="MEMBER_ID" property="memberId"/>
+        <result column="PUT_DATE" property="putDate"/>
+    </resultMap>
+
+</mapper>

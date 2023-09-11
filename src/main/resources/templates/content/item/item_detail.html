@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-7">
                         <div class="row mb-3">
-                            <div class="col">[[${item.itemName}]]</div>
+                            <div class="col"><h1>[[${item.itemName}]]</h1></div>
                         </div>
                         <div class="row mb-3">
                             <div class="col">[[${item.itemPrice}]]</div>
@@ -49,15 +49,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-5">
                     <div class="col">
                         [[${item.itemIntro}]]
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12" th:each="img : ${item.imgList}">
-                        <img th:if="${img.isMain == 'N'}" width="100%" src="${'/images/' + img.attachedFileName}" alt="">
-                    </div>
+                    <th:block th:each="img : ${item.imgList}">
+                        <div class="col-12">
+                            <th:block th:if="${img.isMain == 'N'}">
+                                <img width="100%" height="auto" th:src="${'/images/' + img.attachedFileName}" alt="">
+                            </th:block>
+                        </div>
+                    </th:block>
                 </div>
             </div>
         </div>
