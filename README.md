@@ -1,7 +1,4 @@
 그린의 서재
+![image](https://github.com/EunJinPark98/Shop/assets/120006805/1d3f2afb-59d3-418b-a5ae-873aa0e5a522)
 
 ![image](https://github.com/EunJinPark98/Shop/assets/120006805/96bc32ec-cacd-4cf9-b855-1fe31307df5a)
-
-
-
-아직 만드는 중
