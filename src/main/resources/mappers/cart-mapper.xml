@@ -10,4 +10,19 @@
         <result column="PUT_DATE" property="putDate"/>
     </resultMap>
 
+    <!--장바구니 담기-->
+    <insert id="putItem">
+        INSERT INTO SHOP_CART (
+            CART_CODE
+            , ITEM_CODE
+            , CART_CNT
+            , MEMBER_ID
+            , PUT_DATE
+        )
+        VALUES (
+            (SELECT 'CART_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(CART_CODE, 6))), 0) + 1, 3, '0') FROM SHOP_CART)
+            ,
+        )
+    </insert>
+
 </mapper>

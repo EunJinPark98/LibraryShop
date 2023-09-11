@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/main_layout}" >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<title></title>
 </head>
 <body>
-
+<th:block layout:fragment="content">
+    <div class="row">
+        <div class="col">
+            <table>
+                <thead>
+                    <tr>
+                        <td>No</td>
+                        <td></td>
+                        <td>상품</td>
+                        <td>가격</td>
+                        <td>수량</td>
+                        <td>총 가격</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each=" : ${}">
+                        <td>No</td>
+                        <td></td>
+                        <td>상품</td>
+                        <td>가격</td>
+                        <td>수량</td>
+                        <td>총 가격</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>구매 총 가격 [[]]</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="button" value="선택 삭제">
+            <input type="button" value="선택 구입">
+        </div>
+    </div>
+</th:block>
 </body>
 </html>
