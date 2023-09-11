@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface ItemService {
 
+    //상품 전시
     public List<ItemVO> displayItemList();
+
+    //상품 상세
+    public ItemVO itemDetail(String itemCode);
 }
