@@ -23,25 +23,17 @@
                             <div class="col"><h2>[[${item.itemName}]]</h2></div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col"><h5>판매가</h5>[[${item.itemPrice}]]</div>
+                            <div class="col"><h5>판매가</h5>[[${#numbers.formatCurrency(item.itemPrice)}]]</div>
                         </div>
                         <div class="row mb-3">
                             <div class="col"><h5>수량</h5>
-                                <input id="itemCnt" type="number" class="form-control" value="1" onchange="changeTotalPrice()">
+                                <input id="itemCnt" type="number" class="form-control" value="1" th:data-item-price="${item.itemPrice}">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <h5>총금액</h5>
-                                 <input type="hidden" id="itemPrice" th:value="${item.itemPrice}">
-                                <!-- <input type="hidden" th:value="${#numbers.formatCurrency(item.itemPrice)}"> -->
-                                <p id="totalPrice">[[${item.itemPrice}]]</p>
-                                <script>
-                                    function changeTotalPrice(){
-                                        let totalPrice = document.querySelector('#itemCnt').value * document.querySelector('#itemPrice').value
-                                        document.querySelector('#totalPrice').innerHTML = totalPrice;
-                                    }
-                                </script>
+                                <span id="total-price-span">[[${#numbers.formatCurrency(item.itemPrice)}]]</span>
                             </div>
                         </div>
                         <div class="row">
@@ -75,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <script src="/js/cart/cart_list.js"></script>
+        <script src="/js/item/item_detail.js"></script>
     </th:block>
 </body>
 </html>
