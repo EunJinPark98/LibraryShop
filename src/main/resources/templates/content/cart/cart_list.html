@@ -22,7 +22,7 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" id="allCheckbox" class="form-check-input" checked onclick="setCheck()"></td>
                             <td>상품</td>
                             <td>가격</td>
                             <td>수량</td>
@@ -38,7 +38,7 @@
                         <th:block th:if="${#lists.size(cartList) != 0}">
                             <tr th:each="cart, state : ${cartList}">
                                 <td>[[${#lists.size(cartList) - state.index}]]</td>
-                                <td><input type="checkbox" class="form-check-input" checked></td>
+                                <td><input type="checkbox" class="chk form-check-input" checked></td>
                                 <td class="text-start">
                                     <img width="80px;" th:src="${'/images/' + cart.itemVO.imgList[0].attachedFileName}" alt="">
                                     [[${cart.itemVO.itemName}]]</td>
@@ -73,6 +73,7 @@
                 <input type="button" class="btn btn-primary" value="선택 구입">
             </div>
         </div>
+        <script src="/js/cart/cart_list.js"></script>
     </th:block>
 </body>
 </html>
