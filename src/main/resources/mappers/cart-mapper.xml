@@ -42,5 +42,11 @@
         ORDER BY PUT_DATE DESC
     </select>
 
+    <!--장바구니 상품 삭제-->
+    <delete id="deleteCartItem">
+        DELETE SHOP_CART
+        WHERE CART_CODE = #{cartCode}
+    </delete>
+
 
 </mapper>

@@ -10,4 +10,7 @@ public interface CartService {
 
     //장바구니 목록 조회
     public List<CartVO> selectCartList(String memeberId);
+
+    //장바구니 선택 항목 삭제
+    public void deleteCartItem(String cartCode);
 }

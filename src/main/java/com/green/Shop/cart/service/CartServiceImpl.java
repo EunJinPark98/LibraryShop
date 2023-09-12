@@ -21,4 +21,9 @@ public class CartServiceImpl implements CartService{
     public List<CartVO> selectCartList(String memeberId) {
         return sqlSession.selectList("cartMapper.selectCartList", memeberId);
     }
+
+    @Override
+    public void deleteCartItem(String cartCode) {
+        sqlSession.delete("cartMapper.deleteCartItem", cartCode);
+    }
 }

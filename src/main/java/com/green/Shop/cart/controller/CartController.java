@@ -30,9 +30,16 @@ public class CartController {
     @GetMapping("/list")
     public String cartList(HttpSession session, Model model){
         MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
-        //loginInfo.getMemberId() -> obliviscor
-        model.addAttribute("cartList", cartService.selectCartList("obliviscor"));
+        model.addAttribute("cartList", cartService.selectCartList(loginInfo.getMemberId()));
         return "/content/cart/cart_list";
+    }
+
+    @GetMapping("/deleteCartItem")
+    public String deleteCartItem(String[] cartCodes){
+        for(String cartCode : cartCodes) {
+            cartService.deleteCartItem(cartCode);
+        }
+        return "redirect:/cart/list";
     }
 
 
