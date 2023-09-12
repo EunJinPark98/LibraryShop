@@ -27,11 +27,22 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col"><h5>수량</h5>
-                                <input type="number" class="form-control" value="1">
+                                <input id="itemCnt" type="number" class="form-control" value="1" onchange="changeTotalPrice()">
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col"><h5>총금액</h5>[[${item.itemPrice}]]</div>
+                            <div class="col">
+                                <h5>총금액</h5>
+                                 <input type="hidden" id="itemPrice" th:value="${item.itemPrice}">
+                                <!-- <input type="hidden" th:value="${#numbers.formatCurrency(item.itemPrice)}"> -->
+                                <p id="totalPrice">[[${item.itemPrice}]]</p>
+                                <script>
+                                    function changeTotalPrice(){
+                                        let totalPrice = document.querySelector('#itemCnt').value * document.querySelector('#itemPrice').value
+                                        document.querySelector('#totalPrice').innerHTML = totalPrice;
+                                    }
+                                </script>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col d-grid">
