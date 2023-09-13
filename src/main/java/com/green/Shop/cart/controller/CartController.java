@@ -5,6 +5,7 @@ import com.green.Shop.cart.vo.CartVO;
 import com.green.Shop.member.vo.MemberVO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/cart")
+@RequiredArgsConstructor
 public class CartController {
-    @Resource(name = "cartService")
-    private CartService cartService;
+    private final CartService cartService;
 
     //장바구니 아이템 추가
     @ResponseBody
@@ -27,6 +28,7 @@ public class CartController {
         return cartService.insertCart(cartVO);
     }
 
+    //장바구니 목록
     @GetMapping("/list")
     public String cartList(HttpSession session, Model model){
         MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
@@ -34,6 +36,7 @@ public class CartController {
         return "/content/cart/cart_list";
     }
 
+    //장바구니 선택 품목 삭제
     @GetMapping("/deleteCartItem")
     public String deleteCartItem(String[] cartCodes){
         for(String cartCode : cartCodes) {

@@ -2,6 +2,7 @@ package com.green.Shop.cart.vo;
 
 import com.green.Shop.item.vo.ItemVO;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 public class CartVO {

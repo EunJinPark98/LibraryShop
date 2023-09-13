@@ -1,16 +1,17 @@
 package com.green.Shop.item.service;
 
 import com.green.Shop.item.vo.ItemVO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("itemService")
+@Service
+@RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
-    @Autowired
-    private SqlSessionTemplate sqlSession;
+    private final SqlSessionTemplate sqlSession;
 
     @Override
     public List<ItemVO> displayItemList() {

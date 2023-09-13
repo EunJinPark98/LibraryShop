@@ -6,6 +6,7 @@ import com.green.Shop.item.vo.ItemVO;
 import com.green.Shop.util.ConstantVariable;
 import com.green.Shop.util.UploadUtil;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +24,9 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
+@RequiredArgsConstructor
 public class AdminController {
-    @Resource(name = "adminService")
-    private AdminService adminService;
+    private final AdminService adminService;
 
     //상품 등록 페이지로 이동
     @GetMapping("/regItemForm")

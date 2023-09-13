@@ -4,6 +4,7 @@ import com.green.Shop.member.service.MemberService;
 import com.green.Shop.member.vo.MemberVO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,9 @@ import java.lang.reflect.Member;
 
 @Controller
 @RequestMapping("/member")
+@RequiredArgsConstructor
 public class MemberController {
-    @Resource(name = "memberService")
-    private MemberService memberService;
+    private final MemberService memberService;
 
     @GetMapping("/joinForm")
     public String joinForm(){

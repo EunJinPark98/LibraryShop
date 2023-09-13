@@ -1,16 +1,17 @@
 package com.green.Shop.cart.service;
 
 import com.green.Shop.cart.vo.CartVO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("cartService")
+@Service
+@RequiredArgsConstructor
 public class CartServiceImpl implements CartService{
-    @Autowired
-    private SqlSessionTemplate sqlSession;
+    private final SqlSessionTemplate sqlSession;
 
     @Override
     public int insertCart(CartVO cartVO) {

@@ -3,6 +3,7 @@ package com.green.Shop.item.controller;
 import com.green.Shop.item.service.ItemService;
 import com.green.Shop.item.vo.ItemVO;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +13,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/item")
+@RequiredArgsConstructor
 public class ItemController {
-    @Resource(name="itemService")
-    private ItemService itemService;
+    private final ItemService itemService;
 
     //메인 페이지
     @GetMapping("/main")

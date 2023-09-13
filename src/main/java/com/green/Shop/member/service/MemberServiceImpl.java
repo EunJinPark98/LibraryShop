@@ -1,14 +1,15 @@
 package com.green.Shop.member.service;
 
 import com.green.Shop.member.vo.MemberVO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("memberService")
+@Service
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
-    @Autowired
-    private SqlSessionTemplate sqlSession;
+    private final SqlSessionTemplate sqlSession;
 
     @Override
     public int join(MemberVO memberVO) {
