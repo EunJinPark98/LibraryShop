@@ -53,16 +53,15 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-8">
-                                                <!-- 여기 수량 -->
                                                 <input type="number" class="form-control" th:value="${cart.cartCnt}">
                                             </div>
                                             <div class="col-4 d-grid">
-                                                <input type="button" class="btn btn-success" value="변경" th:onclick="setItemCnt([[${cart.cartCode}]], this)">
+                                                <input type="button" class="btn btn-success" value="변경" th:onclick="setItemCnt([[${cart.cartCode}]], this, [[${cart.itemVO.itemPrice}]] )">
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        [[${#numbers.formatCurrency(cart.itemVO.itemPrice * cart.cartCnt)}]]
+                                        <span class="result-span">[[${#numbers.formatCurrency(cart.itemVO.itemPrice * cart.cartCnt)}]]</span>
                                     </td>
                                 </tr>
                             </th:block>
