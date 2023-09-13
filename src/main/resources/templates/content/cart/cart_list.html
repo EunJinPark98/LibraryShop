@@ -41,7 +41,6 @@
                                         [[${#lists.size(cartList) - state.index}]]
                                     </td>
                                     <td> 
-                                        <!-- 체크박스 여깄어~~~~~~~~!!!!!!! -->
                                         <input type="checkbox" th:value="${cart.cartCode}" th:data-total-price="${cart.itemVO.itemPrice * cart.cartCnt}" class="chk form-check-input" checked onclick="setTotalPrice()">
                                     </td>
                                     <td class="text-start">
@@ -54,10 +53,11 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-8">
-                                                <input type="number" class="form-control" th:value="${cart.cartCnt}">
+                                                <!-- 여기 수량 -->
+                                                <input id="cartCnt" type="number" class="form-control" th:value="${cart.cartCnt}">
                                             </div>
                                             <div class="col-4 d-grid">
-                                                <input type="button" class="btn btn-success" value="변경">
+                                                <input type="button" class="btn btn-success" value="변경" th:onclick="setItemCnt([[${cart.cartCode}]])">
                                             </div>
                                         </div>
                                     </td>

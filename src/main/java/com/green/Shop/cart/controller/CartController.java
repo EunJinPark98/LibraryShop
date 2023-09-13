@@ -45,5 +45,12 @@ public class CartController {
         return "redirect:/cart/list";
     }
 
+    //장바구니 상품 수량 변경
+    @PostMapping("/updateCartItemCnt")
+    @ResponseBody
+    public void updateCartItemCnt(CartVO cartVO){
+        cartService.updateCartItemCnt(cartVO);
+    }
+
 
 }

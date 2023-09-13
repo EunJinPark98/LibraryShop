@@ -13,18 +13,25 @@
 
     <!--장바구니 담기-->
     <insert id="insertCart">
-        INSERT INTO SHOP_CART (
-            CART_CODE
-            , ITEM_CODE
-            , CART_CNT
-            , MEMBER_ID
-        )
-        VALUES (
-            (SELECT 'CART_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(CART_CODE, 6))), 0) + 1, 3, '0') FROM SHOP_CART)
-            , #{itemCode}
-            , #{cartCnt}
-            , #{memberId}
-        )
+        MERGE INTO SHOP_CART
+        USING DUAL
+        ON (ITEM_CODE = #{itemCode} AND MEMBER_ID = #{memberId})
+        WHEN MATCHED THEN
+            UPDATE
+            SET CART_CNT = CART_CNT + #{cartCnt}
+        WHEN NOT MATCHED THEN
+            INSERT (
+                CART_CODE
+                , ITEM_CODE
+                , CART_CNT
+                , MEMBER_ID
+            )
+            VALUES (
+                (SELECT 'CART_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(CART_CODE, 6))), 0) + 1, 3, '0') FROM SHOP_CART)
+                , #{itemCode}
+                , #{cartCnt}
+                , #{memberId}
+            )
     </insert>
 
     <!--장바구니 목록-->
@@ -48,5 +55,11 @@
         WHERE CART_CODE = #{cartCode}
     </delete>
 
+    <!--장바구니 상품 수량변경하기-->
+    <update id="updateCartItemCnt">
+        UPDATE SHOP_CART
+        SET CART_CNT = #{cartCnt}
+        WHERE CART_CODE = #{cartCode}
+    </update>
 
 </mapper>
