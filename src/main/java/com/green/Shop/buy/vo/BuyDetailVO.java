@@ -2,6 +2,8 @@ package com.green.Shop.buy.vo;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class BuyDetailVO {
     private String buyDetailCode;

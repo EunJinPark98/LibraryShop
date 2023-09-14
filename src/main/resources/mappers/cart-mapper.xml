@@ -62,7 +62,7 @@
         WHERE CART_CODE = #{cartCode}
     </update>
 
-    <!--장바구니 상품 구매 시 사용되는 쿼리-->
+    <!--장바구니 상품 구매 시 사용되는 쿼리 (buy)-->
     <select id="selectCartListForBuy" resultMap="buyMapper.buyDetail">
         SELECT C.ITEM_CODE
             , CART_CNT AS BUY_CNT
