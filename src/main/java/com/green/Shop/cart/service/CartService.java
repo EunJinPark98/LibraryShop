@@ -13,7 +13,7 @@ public interface CartService {
     public List<CartVO> selectCartList(String memeberId);
 
     //장바구니 선택 항목 삭제
-    public void deleteCartItem(String cartCode);
+    public void deleteCartItem(CartVO cartVO);
 
     //장바구니 상품 수량 수정
     public void updateCartItemCnt(CartVO cartVO);

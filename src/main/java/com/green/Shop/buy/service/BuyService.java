@@ -2,6 +2,7 @@ package com.green.Shop.buy.service;
 
 import com.green.Shop.buy.vo.BuyDetailVO;
 import com.green.Shop.buy.vo.BuyVO;
+import com.green.Shop.cart.vo.CartVO;
 
 public interface BuyService {
 
@@ -9,6 +10,6 @@ public interface BuyService {
     public String selectNextBuyCode();
 
     //구매상품 등록
-    public void insertBuy(BuyVO buyVO);
+    public void insertBuy(BuyVO buyVO, CartVO cartVO);
 
 }

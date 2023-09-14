@@ -33,15 +33,13 @@ public class BuyController {
         String buyCode = buyService.selectNextBuyCode();
         MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
 
-        /*구매 정보*/
         BuyVO buyVO = new BuyVO();
         buyVO.setBuyCode(buyCode);
         buyVO.setMemberId(loginInfo.getMemberId());
         buyVO.setBuyTotalPrice(Integer.toString(buyTotalPrice));
         buyVO.setBuyDetailList(buyDetailList);
-        buyService.insertBuy(buyVO);
+        buyService.insertBuy(buyVO, cartVO);
 
-        /*구매 상세정보*/
         return "redirect:/cart/list";
     }
 

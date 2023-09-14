@@ -25,8 +25,8 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public void deleteCartItem(String cartCode) {
-        sqlSession.delete("cartMapper.deleteCartItem", cartCode);
+    public void deleteCartItem(CartVO cartVO) {
+        sqlSession.delete("cartMapper.deleteCartItem", cartVO);
     }
 
     @Override

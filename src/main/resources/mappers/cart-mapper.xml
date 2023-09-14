@@ -52,7 +52,10 @@
     <!--장바구니 상품 삭제-->
     <delete id="deleteCartItem">
         DELETE SHOP_CART
-        WHERE CART_CODE = #{cartCode}
+        WHERE CART_CODE IN
+        <foreach collection="cartCodeList" item="cartCode" separator=", " open="(" close=")">
+            #{cartCode}
+        </foreach>
     </delete>
 
     <!--장바구니 상품 수량변경하기-->
@@ -74,4 +77,5 @@
             </foreach>
         AND C.ITEM_CODE = I.ITEM_CODE
     </select>
+
 </mapper>

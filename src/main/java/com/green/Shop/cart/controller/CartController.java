@@ -8,10 +8,9 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/cart")
@@ -38,10 +37,8 @@ public class CartController {
 
     //장바구니 선택 품목 삭제
     @GetMapping("/deleteCartItem")
-    public String deleteCartItem(String[] cartCodes){
-        for(String cartCode : cartCodes) {
-            cartService.deleteCartItem(cartCode);
-        }
+    public String deleteCartItem(@RequestParam(name = "cartCodeList") CartVO cartVO){
+        cartService.deleteCartItem(cartVO);
         return "redirect:/cart/list";
     }
 
