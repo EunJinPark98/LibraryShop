@@ -1,5 +1,6 @@
 package com.green.Shop.cart.service;
 
+import com.green.Shop.buy.vo.BuyDetailVO;
 import com.green.Shop.cart.vo.CartVO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -31,5 +32,10 @@ public class CartServiceImpl implements CartService{
     @Override
     public void updateCartItemCnt(CartVO cartVO) {
         sqlSession.update("cartMapper.updateCartItemCnt", cartVO);
+    }
+
+    @Override
+    public List<BuyDetailVO> selectCartListForBuy(CartVO cartVO) {
+        return sqlSession.selectList("cartMapper.selectCartListForBuy", cartVO);
     }
 }

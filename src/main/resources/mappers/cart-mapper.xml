@@ -62,4 +62,16 @@
         WHERE CART_CODE = #{cartCode}
     </update>
 
+    <!--장바구니 상품 구매 시 사용되는 쿼리-->
+    <select id="selectCartListForBuy" resultMap="buyMapper.buyDetail">
+        SELECT C.ITEM_CODE
+            , CART_CNT AS BUY_CNT
+            , ITEM_PRICE * CART_CNT AS BUY_PRICE
+        FROM SHOP_CART C, SHOP_ITEM I
+        WHERE CART_CODE IN
+            <foreach collection="cartCodeList" item="cartCode" open="(" close=")" separator=", ">
+                #{cartCode}
+            </foreach>
+        AND C.ITEM_CODE = I.ITEM_CODE
+    </select>
 </mapper>

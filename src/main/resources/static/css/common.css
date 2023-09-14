@@ -6,6 +6,11 @@
     font-weight: normal;
     font-style: normal;
 }
+.main-title a{
+    text-decoration: none;
+    color: #4e7463;
+    font-weight: bold;
+}
 .container{
     font-family: 'GowunBatang-Regular';
 }
