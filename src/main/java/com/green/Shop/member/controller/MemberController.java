@@ -57,6 +57,11 @@ public class MemberController {
         return memberService.idCheck(memberId);
     }
 
+    @GetMapping("/info")
+    public String memberInfo(){
+        return "content/member/member_info";
+    }
+
 
 
 

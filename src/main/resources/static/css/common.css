@@ -25,8 +25,8 @@ body{
 }
 
 .list-group-item.active{
-    background-color: #418566;
-    border-color: #418566;
+    background-color: #725C3A;
+    border-color: #725C3A;
 }
 
 .table-list-head{
@@ -34,19 +34,19 @@ body{
 }
 
 .btn:hover{
-    background-color: #418566;
-    border-color: #418566;
+    background-color: #725C3A;
+    border-color: #725C3A;
 }
 
 .btn-primary{
-    background-color: #d1e7dd;
-    border-color:#d1e7dd;
+    background-color: #D2AB80;
+    border-color:#D2AB80;
     color: #333;
 }
 
 .table-list > thead td{
-    background-color: #418566;
-    border-color: #418566;
+    background-color: #725C3A;
+    border-color: #725C3A;
     color: #fff;
 }
 
@@ -62,33 +62,10 @@ body{
 }
 
 
-/* 테이블 디자인 */
-/* .table {
-    --bs-table-color-type: initial;
-    --bs-table-bg-type: initial;
-    --bs-table-color-state: initial;
-    --bs-table-bg-state: initial;
-    --bs-table-color: var(--bs-body-color);
-    --bs-table-bg: var(--bs-body-bg);
-    --bs-table-border-color: var(--bs-border-color);
-    --bs-table-accent-bg: transparent;
-    --bs-table-striped-color: var(--bs-body-color);
-    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
-    --bs-table-active-color: var(--bs-body-color);
-    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-    --bs-table-hover-color: var(--bs-body-color);
-    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-    width: 100%;
-    margin-bottom: 1rem;
-    vertical-align: top;
-    border-color: var(--bs-table-border-color);
-} */
-
-
 /* 메인페이지 */
 .card-body{
-    background-color: #5f4c30;
-    color: #E5E0D8;
+    background-color: #E5D2BB;
+    /* color: #E5E0D8; */
     text-align: center;
     padding: 10px;
 }

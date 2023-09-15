@@ -9,6 +9,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BuyServiceImpl implements BuyService{
@@ -25,6 +27,11 @@ public class BuyServiceImpl implements BuyService{
         sqlSession.insert("buyMapper.insertBuy", buyVO);
         sqlSession.insert("buyMapper.insertBuyDetail", buyVO);
         sqlSession.delete("cartMapper.deleteCartItem", cartVO);
+    }
+
+    @Override
+    public List<BuyVO> selectBuyList(String memberId) {
+        return sqlSession.selectList("buyMapper.selectBuyList", memberId);
     }
 
 }

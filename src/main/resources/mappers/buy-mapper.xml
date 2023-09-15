@@ -54,6 +54,15 @@
         </foreach>
     </insert>
 
+    <!--구매 목록 조회-->
+    <select id="selectBuyList" resultMap="buy">
+        SELECT BUY_CODE
+            , BUY_TOTAL_PRICE
+            , TO_CHAR(BUY_DATE, 'YYYY-MM-DD HH24') AS BUY_DATE
+        FROM SHOP_BUY
+        WHERE MEMBER_ID = #{memberId}
+        ORDER BY BUY_DATE DESC
+    </select>
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{fragment/main_layout}" >
+    layout:decorate="~{fragment/user_layout}" >
 <head>
 <meta charset="UTF-8">
 <title></title>
@@ -61,7 +61,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="result-span">[[${#numbers.formatCurrency(cart.itemVO.itemPrice * cart.cartCnt)}]]</span>
+                                        <span class="result-span text-end">[[${#numbers.formatCurrency(cart.itemVO.itemPrice * cart.cartCnt)}]]</span>
                                     </td>
                                 </tr>
                             </th:block>

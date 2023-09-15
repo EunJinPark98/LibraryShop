@@ -12,10 +12,15 @@
     background-color: #809671 !important;
     border-color: #809671 !important;
     border-radius: 15px !important;
+
 }
 
-.navbar-brand{
+a.navbar-brand{
+    color: #E5E0D8;
+}
 
+a.nav-link{
+    color: #E5E0D8;
 }
 
 #navBarNav{

@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{fragment/main_layout}" >
+    layout:decorate="~{fragment/user_layout}" >
 <head>
 <meta charset="UTF-8">
 <title></title>
 </head>
 <body>
-<th:block layout:fragment="content">
-    <div class="row">
-        <div class="col">
-            <h1>구매목록임</h1>
+    <th:block layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item" th:each="buy, state : ${buyList}">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                결제금액 : [[${buy.buyTotalPrice}]] 주문일시 : [[${buy.buyDate}]]
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
         </div>
-    </div>
-</th:block>
+    </th:block>
 </body>
 </html>

@@ -15,7 +15,7 @@
                 </th:block>
                 <th:block th:if="${session.loginInfo != null}">
                     [[${session.loginInfo.memberName}]]님
-                    <span class="cursor-span" onclick="location.href='/cart/list';">장바구니</span>
+                    <span class="cursor-span" onclick="location.href='/member/info';">마이페이지</span>
                     <span class="cursor-span" onclick="location.href='/member/logout';">로그아웃</span>
                 </th:block>
             </div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <th:block th:fragment="userSideFragment">
+        <div class="row mt-3">
+            <div class="col">
+                <div class="list-group">
+                    <a href="/member/info" class="list-group-item list-group-item-action active" aria-current="true">내 정보 관리</a>
+                    <a href="/cart/list" class="list-group-item list-group-item-action">장바구니</a>
+                    <a href="/buy/list" class="list-group-item list-group-item-action">구매 목록</a>
+                  </div>
+            </div>
+        </div>
+    </th:block>
+</body>
+</html>
