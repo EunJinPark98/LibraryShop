@@ -1,5 +1,6 @@
 package com.green.Shop.buy.vo;
 
+import com.green.Shop.cart.vo.CartVO;
 import lombok.Data;
 
 import java.util.List;

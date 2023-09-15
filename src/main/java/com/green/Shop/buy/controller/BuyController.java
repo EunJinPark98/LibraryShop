@@ -44,10 +44,13 @@ public class BuyController {
         return "redirect:/buy/list";
     }
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public String buyList(Model model, HttpSession session){
         MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
-        model.addAttribute("buyList", buyService.selectBuyList(loginInfo.getMemberId()));
+        List<BuyVO> buyList = buyService.selectBuyList(loginInfo.getMemberId());
+        System.out.println(buyList);
+        model.addAttribute("buyList", buyList);
+
         return "content/buy/buy_list";
     }
 

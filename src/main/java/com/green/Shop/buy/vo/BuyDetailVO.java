@@ -1,5 +1,6 @@
 package com.green.Shop.buy.vo;
 
+import com.green.Shop.item.vo.ItemVO;
 import lombok.Data;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public class BuyDetailVO {
     private int buyCnt;
     private int buyPrice;
     private String buyCode;
+    private ItemVO itemVO;
 }

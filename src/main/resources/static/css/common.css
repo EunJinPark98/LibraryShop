@@ -12,6 +12,9 @@ body{
 .container{
     font-family: 'GowunBatang-Regular';
 }
+.font-bold{
+    font-weight: bold;
+}
 .main-title a{
     text-decoration: none;
     color: #4E4F3D;
@@ -25,23 +28,14 @@ body{
 }
 
 .list-group-item.active{
-    background-color: #725C3A;
-    border-color: #725C3A;
+    background-color: #809671;
+    border-color: #809671;
 }
 
+
+/* 테이블 */
 .table-list-head{
     font-weight: bold;
-}
-
-.btn:hover{
-    background-color: #725C3A;
-    border-color: #725C3A;
-}
-
-.btn-primary{
-    background-color: #D2AB80;
-    border-color:#D2AB80;
-    color: #333;
 }
 
 .table-list > thead td{
@@ -57,15 +51,41 @@ body{
     margin-right: 20px;
 }
 
-.font-bold{
-    font-weight: bold;
+
+
+
+
+/* 버튼 */
+.btn-primary{
+    background-color: #725C3A;
+    border-color:#725C3A;
+    color: #fff;
+}
+
+.btn:hover{
+    background-color: #E5D2B8;
+    border-color:#E5D2B8;
+    color: #000;
+}
+
+
+.btn-secondary{
+    background-color: #D2AB80;
+    border-color:#D2AB80;
+    width: 60px;
+    color: #000;
+}
+
+.btn-secondary:hover{
+    background-color: #E5D2B8;
+    border-color:#E5D2B8;
+    color: #000;
 }
 
 
 /* 메인페이지 */
 .card-body{
-    background-color: #E5D2BB;
-    /* color: #E5E0D8; */
+    background-color: #B3B792;
     text-align: center;
     padding: 10px;
 }
