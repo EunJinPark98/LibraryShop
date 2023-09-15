@@ -10,47 +10,51 @@
     <th:block layout:fragment="content">
         <div class="row justify-content-center">
             <div class="col-6">
-                <div class="row mb-3">
-                    <div class="col-5">
-                        <th:block th:each="img : ${item.imgList}">
-                            <th:block th:if="${img.isMain == 'Y'}">
-                                <img width="100%" height="auto" th:src="${'/images/' + img.attachedFileName}" alt="">
+                <form id="buyInfoForm" action="/buy/buyForm" method="post">
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            <th:block th:each="img : ${item.imgList}">
+                                <th:block th:if="${img.isMain == 'Y'}">
+                                    <img width="100%" height="auto" th:src="${'/images/' + img.attachedFileName}" alt="">
+                                </th:block>
                             </th:block>
-                        </th:block>
+                        </div>
+                        <div class="col-7">
+                            <div class="row mt-2 mb-4 font-weight-bold">
+                                <div class="col"><h2>[[${item.itemName}]]</h2></div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col"><h5>판매가</h5>[[${#numbers.formatCurrency(item.itemPrice)}]]</div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col"><h5>수량</h5>
+                                    <input id="itemCnt" type="number" class="form-control" value="1" th:data-item-price="${item.itemPrice}">
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <h5>총금액</h5>
+                                    <span id="total-price-span">[[${#numbers.formatCurrency(item.itemPrice)}]]</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-grid">
+                                    <button type="button" class="btn btn-primary" th:onclick="isLogin([[${session.loginInfo}]], [[${item.itemCode}]])">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg>    
+                                        장바구니 담기
+                                    </button>
+                                </div>
+                                <div class="col d-grid">
+                                    <input type="button" class="btn btn-primary" value="바로 구매" th:onclick="goBuyForm([[${session.loginInfo}]])">
+                                    <input type="hidden" name="itemPrice" th:value="${item.itemPrice}">
+                                    <input type="hidden" name="itemCode" th:value="${item.itemCode}">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-7">
-                        <div class="row mt-2 mb-4 font-weight-bold">
-                            <div class="col"><h2>[[${item.itemName}]]</h2></div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col"><h5>판매가</h5>[[${#numbers.formatCurrency(item.itemPrice)}]]</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col"><h5>수량</h5>
-                                <input id="itemCnt" type="number" class="form-control" value="1" th:data-item-price="${item.itemPrice}">
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <h5>총금액</h5>
-                                <span id="total-price-span">[[${#numbers.formatCurrency(item.itemPrice)}]]</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-grid">
-                                <button type="button" class="btn btn-primary" th:onclick="isLogin([[${session.loginInfo}]], [[${item.itemCode}]])">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                    </svg>    
-                                    장바구니 담기
-                                </button>
-                            </div>
-                            <div class="col d-grid">
-                                <input type="button" class="btn btn-primary" value="바로 구매">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
                 <div class="row mb-5 text-center">
                     <div class="col">
                         [[${item.itemIntro}]]
