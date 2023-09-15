@@ -34,4 +34,11 @@ public class BuyServiceImpl implements BuyService{
         return sqlSession.selectList("buyMapper.selectBuyList", memberId);
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void regBuy(BuyVO buyVO, BuyDetailVO buyDetailVO) {
+        sqlSession.insert("buyMapper.insertBuy", buyVO);
+        sqlSession.insert("buyMapper.regBuy", buyDetailVO);
+    }
+
 }

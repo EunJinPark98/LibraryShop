@@ -11,6 +11,8 @@
         <div class="row justify-content-center">
             <div class="col-6">
                 <form id="buyInfoForm" action="/buy/buyForm" method="post">
+                    <input type="hidden" name="buyPrice" th:value="${item.itemPrice}">
+                    <input type="hidden" name="itemCode" th:value="${item.itemCode}">
                     <div class="row mb-3">
                         <div class="col-5">
                             <th:block th:each="img : ${item.imgList}">
@@ -28,7 +30,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col"><h5>수량</h5>
-                                    <input id="itemCnt" type="number" class="form-control" value="1" th:data-item-price="${item.itemPrice}">
+                                    <input id="itemCnt" type="number" name="buyCnt" class="form-control" value="1" th:data-item-price="${item.itemPrice}">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -48,8 +50,6 @@
                                 </div>
                                 <div class="col d-grid">
                                     <input type="button" class="btn btn-primary" value="바로 구매" th:onclick="goBuyForm([[${session.loginInfo}]])">
-                                    <input type="hidden" name="itemPrice" th:value="${item.itemPrice}">
-                                    <input type="hidden" name="itemCode" th:value="${item.itemCode}">
                                 </div>
                             </div>
                         </div>

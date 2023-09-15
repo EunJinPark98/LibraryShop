@@ -17,4 +17,7 @@ public interface BuyService {
     //구매 목록 조회
     public List<BuyVO> selectBuyList(String memberId);
 
+    //바로 구매
+    public void regBuy(BuyVO buyVO, BuyDetailVO buyDetailVO);
+
 }

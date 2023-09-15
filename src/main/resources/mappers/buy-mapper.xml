@@ -25,7 +25,7 @@
         SELECT 'BUY_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BUY_CODE, 5))), 0) + 1, 3, '0')
         FROM SHOP_BUY
     </select>
-
+    <!--buy삽입-->
     <insert id="insertBuy">
         INSERT INTO SHOP_BUY (
             BUY_CODE
@@ -37,6 +37,7 @@
             , #{buyTotalPrice}
         )
     </insert>
+    <!--장바구니에서 구매시 buyDetail 삽입-->
     <insert id="insertBuyDetail">
         INSERT INTO SHOP_BUY_DETAIL (
             BUY_DETAIL_CODE
@@ -53,6 +54,22 @@
                 , #{buyCode}
             FROM DUAL
         </foreach>
+    </insert>
+    <!--바로구매시 buyDetail 삽입-->
+    <insert id="regBuy">
+        INSERT INTO SHOP_BUY_DETAIL (
+            BUY_DETAIL_CODE
+            , ITEM_CODE
+            , BUY_CNT
+            , BUY_PRICE
+            , BUY_CODE
+        ) VALUES (
+            #{buyCode}||'_1'
+            , #{itemCode}
+            , #{buyCnt}
+            , #{buyPrice}
+            , #{buyCode}
+        )
     </insert>
 
     <!--구매 목록 조회-->

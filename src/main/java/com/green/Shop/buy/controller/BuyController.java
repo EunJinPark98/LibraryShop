@@ -56,9 +56,20 @@ public class BuyController {
         return "content/buy/buy_list";
     }
 
-    //바로구매하러가기
+    //바로구매 하러가기
     @PostMapping("/buyForm")
-    public String buyForm(){
+    public String buyForm(BuyDetailVO buyDetailVO, BuyVO buyVO, HttpSession session){
+        String buyCode = buyService.selectNextBuyCode();
+        buyDetailVO.setBuyCode(buyCode);
+
+        buyVO.setMemberId(((MemberVO)session.getAttribute("loginInfo")).getMemberId());
+        buyVO.setBuyCode(buyCode);
+
+        buyVO.setBuyTotalPrice(Integer.toString(buyDetailVO.getBuyPrice()));
+
+        buyService.regBuy(buyVO, buyDetailVO);
+
+        //System.out.println("!!!!!!!!!!!!!!!!!!!" + buyDetailVO.getItemCode());
 
         return "content/buy/buy_form";
     }
