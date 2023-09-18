@@ -9,9 +9,22 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
     <th:block th:fragment="adminSideFragment">
         <div class="row mt-3">
             <div class="col">
-                <div class="list-group" th:each="menu : ${menuList}">  
-                    <a th:href="${menu.menuUrl}" class="list-group-item list-group-item-action active" aria-current="true">[[${menu.menuName}]]</a>
-                  </div>
+                <div id="accordionPanelsStayOpenExample" class="accordion list-group" th:each="menu : ${menuList}">  
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button th:onclick="location.href='${menu.menuUrl}';" class="accordion-button list-group-item list-group-item-action active"  aria-current="true" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            [[${menu.menuName}]]
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                        </div>
+                      </div>
+                    </div>
+                   
+                
+                    
+                </div>
             </div>
         </div>
     </th:block>

@@ -13,11 +13,18 @@
                     <span class="cursor-span" onclick="location.href='/member/loginForm';">로그인</span>
                     <span class="cursor-span" data-bs-toggle="modal" data-bs-target="#join-modal">회원가입</span>
                 </th:block>
-                <th:block th:if="${session.loginInfo != null}">
-                    [[${session.loginInfo.memberName}]]님
-                    <span class="cursor-span" onclick="location.href='/member/info';">마이페이지</span>
-                    <span class="cursor-span" onclick="location.href='/member/logout';">로그아웃</span>
-                </th:block>
+                <div id="util">
+                    <th:block th:if="${session.loginInfo != null}">
+                        [[${session.loginInfo.memberName}]]님 반갑습니다!
+                        <th:block th:if="${session.loginInfo.memberName == '관리자'}">
+                            <span class="cursor-span" onclick="location.href='/admin/itemManage';">서재관리</span>
+                        </th:block>
+                        <th:block th:if="${session.loginInfo.memberName != '관리자'}">
+                            <span class="cursor-span" onclick="location.href='/member/info';">마이페이지</span>
+                        </th:block>
+                        <span class="cursor-span" onclick="location.href='/member/logout';">로그아웃</span>
+                    </th:block>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -32,28 +39,28 @@
             <div class="col">
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">책장</a>
+                        <a class="navbar-brand" href="#" style="margin-left: 20px; color: black;">책장</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                             aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
+                            <ul class="navbar-nav main-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">서재 홈</a>
+                                    <a class="nav-link active" aria-current="page" href="#">전체</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">IT/인터넷</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" href="#">에세이</a>
+                                    <a class="nav-link" href="#">에세이</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-disabled="false">자기계발</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link disabled" aria-disabled="false">경제/경영</a>
+                                    <a class="nav-link" aria-disabled="false">경제/경영</a>
                                 </li>
                             </ul>
                         </div>

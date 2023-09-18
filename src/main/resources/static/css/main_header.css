@@ -23,6 +23,10 @@ a.nav-link{
     color: #E5E0D8;
 }
 
-#navBarNav{
-    
+.main-nav li{
+    margin-right: 10px;
+}
+
+#util span{
+    margin-left: 6px;
 }
