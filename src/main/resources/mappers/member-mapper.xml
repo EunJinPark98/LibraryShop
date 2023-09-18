@@ -3,7 +3,7 @@
 
 <mapper namespace="memberMapper">
     <resultMap id="member" type="com.green.Shop.member.vo.MemberVO">
-        <result column="MEMBER_ID" property="memberId"/>
+        <id column="MEMBER_ID" property="memberId"/>
         <result column="MEMBER_PW" property="memberPw"/>
         <result column="MEMBER_NAME" property="memberName"/>
         <result column="MEMBER_TEL" property="memberTel"/>

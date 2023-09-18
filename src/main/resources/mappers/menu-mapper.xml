@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="menuMapper">
+    <resultMap id="menu" type="com.green.Shop.admin.vo.MenuVO">
+        <result column="MENU_CODE" property="menuCode"/>
+        <result column="MENU_NAME" property="menuName"/>
+        <result column="MENU_URL" property="menuUrl"/>
+    </resultMap>
+
+    <resultMap id="subMenu" type="com.green.Shop.admin.vo.SubMenuVO">
+        <result column="SUB_MENU_CODE" property="subMenuCode"/>
+        <result column="SUB_MENU_NAME" property="subMenuName"/>
+        <result column="SUB_MENU_URL" property="subMenuUrl"/>
+        <result column="MENU_CODE" property="menuCode"/>
+    </resultMap>
+
+    <!--메뉴보기-->
+    <select id="selectMenuList" resultMap="menu">
+        SELECT MENU_CODE
+            , MENU_NAME
+            , MENU_URL
+        FROM SHOP_MENU
+    </select>
+
+
+
+</mapper>

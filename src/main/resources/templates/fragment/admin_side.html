@@ -9,10 +9,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
     <th:block th:fragment="adminSideFragment">
         <div class="row mt-3">
             <div class="col">
-                <div class="list-group">
-                    <a href="/admin/regItemForm" class="list-group-item list-group-item-action active" aria-current="true">상품 등록</a>
-                    <a href="/admin/itemManage" class="list-group-item list-group-item-action">상품 관리</a>
-                    <a href="#" class="list-group-item list-group-item-action">카테고리 관리</a>
+                <div class="list-group" th:each="menu : ${menuList}">  
+                    <a th:href="${menu.menuUrl}" class="list-group-item list-group-item-action active" aria-current="true">[[${menu.menuName}]]</a>
                   </div>
             </div>
         </div>

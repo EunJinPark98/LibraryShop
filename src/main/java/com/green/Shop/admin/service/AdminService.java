@@ -1,4 +1,4 @@
-package com.green.Shop.admin;
+package com.green.Shop.admin.service;
 
 import com.green.Shop.item.vo.CateVO;
 import com.green.Shop.item.vo.ImgVO;

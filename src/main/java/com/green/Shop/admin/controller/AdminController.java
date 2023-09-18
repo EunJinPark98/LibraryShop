@@ -1,13 +1,12 @@
-package com.green.Shop.admin;
+package com.green.Shop.admin.controller;
 
+import com.green.Shop.admin.service.AdminService;
+import com.green.Shop.admin.service.MenuService;
 import com.green.Shop.item.vo.ImgVO;
 import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
-import com.green.Shop.util.ConstantVariable;
 import com.green.Shop.util.UploadUtil;
-import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class AdminController {
     private final AdminService adminService;
+    private final MenuService menuService;
 
     //상품 등록 페이지로 이동
     @GetMapping("/regItemForm")
@@ -63,6 +59,7 @@ public class AdminController {
     public String itemManageForm(ItemSearchVO itemSearchVO, Model model){
         model.addAttribute("itemList", adminService.selectItemList(itemSearchVO));
         model.addAttribute("cateList", adminService.selectCateList());
+        model.addAttribute("menuList", menuService.selectMenuList());
         return "/content/admin/item_manage";
     }
 
@@ -79,6 +76,8 @@ public class AdminController {
     public void updateStatus(ItemVO itemVO){
         adminService.updateStatus(itemVO);
     }
+
+    //메뉴
 
 
 
