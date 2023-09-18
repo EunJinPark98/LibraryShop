@@ -5,15 +5,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+@Configuration //객체 생성 어노테이션 추가
 @RequiredArgsConstructor
-public class InterceptorConfig implements WebMvcConfigurer {
-    private final CheckAdminInterceptor adminInterceptor;
+public class TestInterceptorConfig implements WebMvcConfigurer {
+    private final TestInterceptor testInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(adminInterceptor)
-                .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/**Fetch");
+        registry.addInterceptor(testInterceptor)
+                .addPathPatterns("/item/**")
+                .excludePathPatterns("/item/detail");
     }
 }

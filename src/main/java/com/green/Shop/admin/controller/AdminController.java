@@ -72,7 +72,7 @@ public class AdminController {
 
     //상품 상태 수정
     @ResponseBody
-    @PostMapping("/updateStatus")
+    @PostMapping("/updateStatusFetch")
     public void updateStatus(ItemVO itemVO){
         adminService.updateStatus(itemVO);
     }
