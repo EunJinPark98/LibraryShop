@@ -6,6 +6,7 @@
         <result column="MENU_CODE" property="menuCode"/>
         <result column="MENU_NAME" property="menuName"/>
         <result column="MENU_URL" property="menuUrl"/>
+        <collection property="subMenuList" resultMap="subMenu"/>
     </resultMap>
 
     <resultMap id="subMenu" type="com.green.Shop.admin.vo.SubMenuVO">
@@ -17,10 +18,14 @@
 
     <!--메뉴 조회-->
     <select id="selectMenuList" resultMap="menu">
-        SELECT MENU_CODE
+        SELECT SHOP_MENU.MENU_CODE
             , MENU_NAME
             , MENU_URL
-        FROM SHOP_MENU
+            , SUB_MENU_CODE
+            , SUB_MENU_NAME
+            , SUB_MENU_URL
+        FROM SHOP_MENU, SHOP_SUB_MENU
+        WHERE SHOP_MENU.MENU_CODE = SHOP_SUB_MENU.MENU_CODE
         ORDER BY MENU_CODE
     </select>
 

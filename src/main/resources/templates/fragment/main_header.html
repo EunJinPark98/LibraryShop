@@ -7,15 +7,15 @@
 <body>
     <th:block th:fragment="mainHeaderFragment">
         <link rel="stylesheet" href="/css/main_header.css">
-        <div class="row">
+        <div id="util" class="row">
             <div class="col text-end">
                 <th:block th:if="${session.loginInfo == null}">
                     <span class="cursor-span" onclick="location.href='/member/loginForm';">로그인</span>
                     <span class="cursor-span" data-bs-toggle="modal" data-bs-target="#join-modal">회원가입</span>
                 </th:block>
-                <div id="util">
+                <div>
                     <th:block th:if="${session.loginInfo != null}">
-                        [[${session.loginInfo.memberName}]]님 반갑습니다!
+                        [[${session.loginInfo.memberName}]]님 반갑습니다! <br>
                         <th:block th:if="${session.loginInfo.memberName == '관리자'}">
                             <span class="cursor-span" onclick="location.href='/admin/itemManage';">서재관리</span>
                         </th:block>

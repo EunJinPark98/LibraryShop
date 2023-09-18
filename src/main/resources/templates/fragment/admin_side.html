@@ -18,12 +18,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
                       </h2>
                       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                         <div class="accordion-body">
+                            <div th:each="subMenu : ${menu.subMenuList}">
+                                [[${subMenu.subMenuName}]]
+                            </div>
                         </div>
                       </div>
                     </div>
-                   
-                
-                    
                 </div>
             </div>
         </div>
