@@ -22,4 +22,9 @@ public class ItemServiceImpl implements ItemService {
     public ItemVO itemDetail(String itemCode) {
         return sqlSession.selectOne("itemMapper.itemDetail", itemCode);
     }
+
+    @Override
+    public List<ItemVO> selectCategory() {
+        return sqlSession.selectList("itemMapper.selectCategory");
+    }
 }

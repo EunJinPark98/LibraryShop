@@ -9,11 +9,28 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RequiredArgsConstructor
 public class InterceptorConfig implements WebMvcConfigurer {
     private final CheckAdminInterceptor adminInterceptor;
+    private final MenuInterceptor menuInterceptor;
+    private final CateInterceptor cateInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        //관리자 권한 확인
         registry.addInterceptor(adminInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/**Fetch");
+
+        //관리자 메뉴 조회
+        registry.addInterceptor(menuInterceptor)
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/**Fetch");
+
+        //카테고리 조회
+        registry.addInterceptor(cateInterceptor)
+                .addPathPatterns("/admin/**")
+                .addPathPatterns("/buy/**")
+                .addPathPatterns("/cart/**")
+                .addPathPatterns("/item/**")
+                .addPathPatterns("/member/**")
+                .excludePathPatterns("/*/**Fetch");
     }
 }

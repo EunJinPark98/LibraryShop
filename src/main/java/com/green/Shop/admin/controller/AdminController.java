@@ -22,7 +22,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminController {
     private final AdminService adminService;
-    private final MenuService menuService;
 
     //상품 등록 페이지로 이동
     @GetMapping("/regItemForm")
@@ -59,7 +58,6 @@ public class AdminController {
     public String itemManageForm(ItemSearchVO itemSearchVO, Model model){
         model.addAttribute("itemList", adminService.selectItemList(itemSearchVO));
         model.addAttribute("cateList", adminService.selectCateList());
-        model.addAttribute("menuList", menuService.selectMenuList());
         return "/content/admin/item_manage";
     }
 
@@ -77,7 +75,13 @@ public class AdminController {
         adminService.updateStatus(itemVO);
     }
 
-    //메뉴
+
+
+    //회원 목록 페이지
+    @GetMapping("/memberManage")
+    public String selectMemberList(){
+        return "content/admin/member_list";
+    }
 
 
 

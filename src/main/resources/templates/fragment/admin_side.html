@@ -9,18 +9,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
     <th:block th:fragment="adminSideFragment">
         <div class="row mt-3">
             <div class="col">
-                <div id="accordionPanelsStayOpenExample" class="accordion list-group" th:each="menu : ${menuList}">  
+                <div id="accordionPanelsStayOpenExample" class="accordion list-group" th:each="menu, state : ${menuList}">  
                     <div class="accordion-item">
                       <h2 class="accordion-header">
-                        <button th:onclick="location.href='${menu.menuUrl}';" class="accordion-button list-group-item list-group-item-action active"  aria-current="true" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button collapsed list-group-item list-group-item-action active" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#my-panel-' + state.index}" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                             [[${menu.menuName}]]
                         </button>
                       </h2>
-                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                        <div class="accordion-body">
-                            <div th:each="subMenu : ${menu.subMenuList}">
-                                [[${subMenu.subMenuName}]]
-                            </div>
+                      <div th:id="${'my-panel-' + state.index}" class="accordion-collapse collapse">
+                        <div class="accordion-body" th:each="subMenu : ${menu.subMenuList}">
+                            <a th:href="${subMenu.subMenuUrl}">[[${subMenu.subMenuName}]]</a>
                         </div>
                       </div>
                     </div>

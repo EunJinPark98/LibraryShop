@@ -15,11 +15,12 @@
                 </th:block>
                 <div>
                     <th:block th:if="${session.loginInfo != null}">
-                        [[${session.loginInfo.memberName}]]님 반갑습니다! <br>
                         <th:block th:if="${session.loginInfo.memberName == '관리자'}">
-                            <span class="cursor-span" onclick="location.href='/admin/itemManage';">서재관리</span>
+                            <span class="cursor-span" onclick="location.href='/admin/itemManage';">서재관리
+                            <img style="width: 23px; height: auto; margin-right: 5px;" src="/images/bookManage.png" alt=""></span>
                         </th:block>
                         <th:block th:if="${session.loginInfo.memberName != '관리자'}">
+                            <sapn>[[${session.loginInfo.memberName}]]님 반갑습니다!</sapn>
                             <span class="cursor-span" onclick="location.href='/member/info';">마이페이지</span>
                         </th:block>
                         <span class="cursor-span" onclick="location.href='/member/logout';">로그아웃</span>
@@ -29,7 +30,7 @@
         </div>
         <div class="row">
             <div class="col text-center mb-3" style="display: flex; justify-content: center;">
-                <h1 class="main-title"><a href="/">그린의 서재</a></h1>
+                <h1 class="main-title"><a href="/item/main">그린의 서재</a></h1>
                 <p style="width: 40px; height: auto; margin-left: 10px;"><img style="width: 100%; height: auto;" src="/images/logoImg2.png" alt=""></p>
             </div>
         </div>
@@ -50,18 +51,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="#">전체</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">IT/인터넷</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">에세이</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-disabled="false">자기계발</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-disabled="false">경제/경영</a>
-                                </li>
+                                <th:block th:each="cate : ${categoryList}">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">[[${cate.cateName}]]</a>
+                                    </li>
+                                </th:block>
                             </ul>
                         </div>
                     </div>
@@ -82,7 +76,7 @@
                                 <input type="text" class="form-control" id="memberId" name="memberId" onkeyup="setDisabled()">
                             </div>
                             <div class="col-4 d-grid">
-                                <label for="" class="form-label">&nbsp;</label>
+                                <label class="form-label">&nbsp;</label>
                                 <input type="button" class="btn btn-primary" value="중복확인" onclick="idCheck()">
                             </div>
                             <div class="error-div" id="id-error-div"></div>
@@ -95,20 +89,20 @@
                                 <input type="text" class="form-control" id="memberName" name="memberName">
                             </div>
                             <div class="col-4">
-                                <label for="" class="form-label">연락처</label>
-                                <select class="form-select" name="memberTels" id="">
+                                <label class="form-label">연락처</label>
+                                <select class="form-select" name="memberTels" >
                                     <option value="010" selected>010</option>
                                     <option value="011">011</option>
                                     <option value="012">012</option>
                                 </select>
                             </div>
                             <div class="col-4">
-                                <label for="" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="" name="memberTels">
+                                <label class="form-label">&nbsp;</label>
+                                <input type="text" class="form-control" name="memberTels">
                             </div>
                             <div class="col-4">
-                                <label for="" class="form-label">&nbsp;</label>
-                                <input type="text" class="form-control" id="" name="memberTels">
+                                <label class="form-label">&nbsp;</label>
+                                <input type="text" class="form-control" name="memberTels">
                             </div>
                             <div class="error-div" id="tel-error-div"></div>
                             <div class="col-8">
@@ -116,18 +110,18 @@
                                 <input type="text" class="form-control" id="memberAddr" name="memberAddr" readonly onclick="openPost()">
                             </div>
                             <div class="col-4 d-grid">
-                                <label for="" class="form-label">&nbsp;</label>
+                                <label class="form-label">&nbsp;</label>
                                 <input type="button" class="btn btn-primary" value="주소검색" onclick="openPost()">
                             </div>
                             <div class="col-12">
                                 <input type="text" class="form-control" id="addrDetail" name="addrDetail" placeholder="상세 주소">
                             </div>
                             <div class="col-8">
-                                <label for="memberEmail" class="form-label">이메일</label>
+                                <label class="form-label">이메일</label>
                                 <input type="text" class="form-control" name="memberEmails">
                             </div>
                             <div class="col-4">
-                                <label for="" class="form-label">&nbsp;</label>
+                                <label class="form-label">&nbsp;</label>
                                 <select class="form-select" name="memberEmails">
                                     <option value="@naver.com" selected>@naver.com</option>
                                     <option value="@gamil.com">@gamil.com</option>

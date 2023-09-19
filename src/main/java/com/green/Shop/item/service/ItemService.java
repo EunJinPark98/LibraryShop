@@ -11,4 +11,7 @@ public interface ItemService {
 
     //상품 상세
     public ItemVO itemDetail(String itemCode);
+
+    //카테고리 조회
+    public List<ItemVO> selectCategory();
 }

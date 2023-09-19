@@ -31,9 +31,9 @@
 
     <select id="selectSubMenuList" resultMap="subMenu">
         SELECT SUB_MENU_CODE
-        , SUB_MENU_NAME
-        , SUB_MENU_URL
-        , MENU_CODE
+            , SUB_MENU_NAME
+            , SUB_MENU_URL
+            , MENU_CODE
         FROM SHOP_SUB_MENU
         WHERE MENU_CODE = #{menuCode}
     </select>

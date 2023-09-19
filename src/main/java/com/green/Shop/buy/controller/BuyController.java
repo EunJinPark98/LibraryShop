@@ -69,8 +69,6 @@ public class BuyController {
 
         buyService.regBuy(buyVO, buyDetailVO);
 
-        //System.out.println("!!!!!!!!!!!!!!!!!!!" + buyDetailVO.getItemCode());
-
         return "content/buy/buy_form";
     }
 

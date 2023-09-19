@@ -9,6 +9,10 @@
 body{
     background-color: #E5E0D8;
 }
+a{
+    color: #212529;
+    text-decoration: none;
+}
 .container{
     font-family: 'GowunBatang-Regular';
 }
