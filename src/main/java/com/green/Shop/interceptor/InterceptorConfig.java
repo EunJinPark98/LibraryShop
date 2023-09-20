@@ -26,12 +26,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
         //카테고리 조회
         registry.addInterceptor(cateInterceptor)
-                .addPathPatterns("/admin/**")
-                .addPathPatterns("/buy/**")
-                .addPathPatterns("/cart/**")
-                .addPathPatterns("/item/**")
-                .addPathPatterns("/member/**")
-                .excludePathPatterns("/*/**Fetch");
+                .addPathPatterns("/**")
+                .excludePathPatterns("/**/**Fetch");
 
     }
 }

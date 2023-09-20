@@ -19,14 +19,13 @@
             }
         </style>
         <h1>[[${intercepterData}]]</h1>
-        <div class="row row-cols5 g-4">
+        <div class="row">
             <div class="col" th:each="item, state: ${itemList}">
                 <div class="card" style="width: 12rem;">
                     <a th:href="@{/item/detail(itemCode=${item.itemCode})}" class="bookImg"><img th:src="${'/images/' + item.imgList[0].attachedFileName}" class="card-img-top" alt="..."></a>
                     <div class="card-body">
                         <h5 class="card-title">[[${item.itemName}]]</h5>
-                        <p class="card-text">[[${#numbers.formatCurrency(item.itemPrice)}]]</p>
-                        <p>[[${item.cateCode}]]</p>
+                        <p class="card-text">[[${item.itemIntro}]]</p>
                     </div>
                 </div>
             </div>

@@ -49,11 +49,11 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav main-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">전체</a>
+                                    <a class="nav-link active" aria-current="page" th:href="@{/item/main}">전체</a>
                                 </li>
                                 <th:block th:each="cate : ${categoryList}">
                                     <li class="nav-item">
-                                        <a class="nav-link" th:href="@{/item/main('cateCode'=${cate.cateCode})}">[[${cate.cateName}]] / [[${cate.cateCode}]]</a>
+                                        <a class="nav-link" th:href="@{/item/main('cateCode'=${cate.cateCode})}">[[${cate.cateName}]]</a>
                                     </li>
                                 </th:block>
                             </ul>

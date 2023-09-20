@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -17,11 +18,13 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
 
+
     //메인 페이지
     @GetMapping("/main")
     public String shopMain(Model model, String cateCode){
         List<ItemVO> itemList = itemService.displayItemList(cateCode);
         model.addAttribute("itemList", itemList);
+
         return "/content/item/main";
     }
 
