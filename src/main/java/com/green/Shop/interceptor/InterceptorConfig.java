@@ -17,17 +17,20 @@ public class InterceptorConfig implements WebMvcConfigurer {
         //관리자 권한 확인
         registry.addInterceptor(adminInterceptor)
                 .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/**Fetch");
+                .excludePathPatterns("/admin/**Fetch")
+                .excludePathPatterns("/images/**", "/css/**", "/js/**");
 
         //관리자 메뉴 조회
         registry.addInterceptor(menuInterceptor)
                 .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/**Fetch");
+                .excludePathPatterns("/admin/**Fetch")
+                .excludePathPatterns("/images/**", "/css/**", "/js/**");
 
         //카테고리 조회
         registry.addInterceptor(cateInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/**/**Fetch");
+                .excludePathPatterns("/**/**Fetch")
+                .excludePathPatterns("/images/**", "/css/**", "/js/**");
 
     }
 }
