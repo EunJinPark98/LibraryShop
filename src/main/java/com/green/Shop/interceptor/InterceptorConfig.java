@@ -11,7 +11,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
     private final CheckAdminInterceptor adminInterceptor;
     private final MenuInterceptor menuInterceptor;
     private final CateInterceptor cateInterceptor;
-    private final TestInterceptor testInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -34,8 +33,5 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/member/**")
                 .excludePathPatterns("/*/**Fetch");
 
-        //데이터전달하는 테스트용@@@@
-        registry.addInterceptor(testInterceptor)
-                .addPathPatterns("/item/main");
     }
 }

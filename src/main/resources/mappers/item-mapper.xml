@@ -27,20 +27,24 @@
         <result column="IS_MAIN" property="isMain"/>
     </resultMap>
 
-    <!--판매아이템 조회-->
+    <!--상품 조회-->
     <select id="displayItemList" resultMap="item">
         SELECT ITEM.ITEM_CODE
             , ITEM_NAME
             , ITEM_PRICE
             , ATTACHED_FILE_NAME
+            , CATE_CODE
         FROM SHOP_ITEM ITEM, ITEM_IMG IMG
         WHERE ITEM.ITEM_CODE = IMG.ITEM_CODE
         AND IS_MAIN = 'Y'
         AND ITEM_STATUS = 1
+        <if test="cateCode != null">
+            AND CATE_CODE = #{cateCode}
+        </if>
         ORDER BY ITEM.ITEM_CODE DESC
     </select>
 
-    <!--아이템 상세보기-->
+    <!--상품 상세보기-->
     <select id="itemDetail" resultMap="item">
         SELECT ITEM.ITEM_CODE
             , ITEM_NAME

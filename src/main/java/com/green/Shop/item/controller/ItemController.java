@@ -19,15 +19,9 @@ public class ItemController {
 
     //메인 페이지
     @GetMapping("/main")
-    public String shopMain(Model model){
-        List<ItemVO> itemList = itemService.displayItemList();
+    public String shopMain(Model model, String cateCode){
+        List<ItemVO> itemList = itemService.displayItemList(cateCode);
         model.addAttribute("itemList", itemList);
-        System.out.println(itemList);
-
-
-        model.addAttribute("modelData", "데이터전달 테스트입니다");
-
-
         return "/content/item/main";
     }
 

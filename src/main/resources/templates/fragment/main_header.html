@@ -53,7 +53,7 @@
                                 </li>
                                 <th:block th:each="cate : ${categoryList}">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">[[${cate.cateName}]]</a>
+                                        <a class="nav-link" th:href="@{/item/main('cateCode'=${cate.cateCode})}">[[${cate.cateName}]] / [[${cate.cateCode}]]</a>
                                     </li>
                                 </th:block>
                             </ul>

@@ -13,13 +13,13 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
                     <div class="accordion-item">
                       <h2 class="accordion-header">
                         <button class="accordion-button collapsed list-group-item list-group-item-action active" type="button" data-bs-toggle="collapse"
-                                th:data-bs-target="${'#my-panel-' + state.index}" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo"  >
+                        th:data-bs-target="${'#my-panel-' + state.index}" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo"  >
                             [[${menu.menuName}]]
                         </button>
                       </h2>
                       <div th:id="${'my-panel-' + state.index}" class="accordion-collapse collapse">
                         <div class="accordion-body" th:each="subMenu : ${menu.subMenuList}">
-                            <a th:href="@{${subMenu.subMenuUrl}(menuCode=${menu.menuCode}, subMenuCode=${subMenu.subMenuCode})}">[[${subMenu.subMenuName}]] / [[${subMenu.subMenuCode}]] / [[${subMenuVO.subMenuCode}]]</a>
+                            <a th:href="${subMenu.subMenuUrl}">[[${subMenu.subMenuName}]]</a>
                         </div>
                       </div>
                     </div>
@@ -28,4 +28,4 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
         </div>
     </th:block>
 </body>
-</html>
+</html>             
