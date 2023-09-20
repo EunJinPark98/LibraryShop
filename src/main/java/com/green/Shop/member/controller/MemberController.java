@@ -42,7 +42,7 @@ public class MemberController {
         if(loginInfo != null){
             session.setAttribute("loginInfo", loginInfo);
         }
-        return "content/member/login_result";
+        return "/content/member/login_result";
     }
 
     @GetMapping("/logout")
@@ -52,14 +52,14 @@ public class MemberController {
     }
 
     @ResponseBody
-    @PostMapping("/idCheck")
+    @PostMapping("/idCheckFetch")
     public boolean idCheck(String memberId){
         return memberService.idCheck(memberId);
     }
 
     @GetMapping("/info")
     public String memberInfo(){
-        return "content/member/member_info";
+        return "/content/member/member_info";
     }
 
 

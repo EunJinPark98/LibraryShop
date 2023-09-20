@@ -48,7 +48,7 @@ function inputInvalidate(tagId, msg){
 
 //아이디 중복확인
 function idCheck(){
-    fetch('/member/idCheck', { 		
+    fetch('/member/idCheckFetch', { 		
         method: 'POST', 		
         cache: 'no-cache',
         headers: {

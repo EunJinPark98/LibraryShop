@@ -23,14 +23,14 @@ public class ItemController {
         List<ItemVO> itemList = itemService.displayItemList();
         model.addAttribute("itemList", itemList);
         System.out.println(itemList);
-        return "content/item/main";
+        return "/content/item/main";
     }
 
     //아이템 상세 페이지
     @GetMapping("/detail")
     public String itemDetail(String itemCode, Model model){
         model.addAttribute("item", itemService.itemDetail(itemCode));
-        return "content/item/item_detail";
+        return "/content/item/item_detail";
     }
 
 }

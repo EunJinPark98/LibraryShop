@@ -20,7 +20,7 @@ public class CartController {
 
     //장바구니 아이템 추가
     @ResponseBody
-    @PostMapping("/insertCart")
+    @PostMapping("/insertCartFetch")
     public int insertCart(CartVO cartVO, HttpSession session){
         MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
         cartVO.setMemberId(loginInfo.getMemberId());
@@ -43,7 +43,7 @@ public class CartController {
     }
 
     //장바구니 상품 수량 변경
-    @PostMapping("/updateCartItemCnt")
+    @PostMapping("/updateCartItemCntFetch")
     @ResponseBody
     public void updateCartItemCnt(CartVO cartVO){
         cartService.updateCartItemCnt(cartVO);

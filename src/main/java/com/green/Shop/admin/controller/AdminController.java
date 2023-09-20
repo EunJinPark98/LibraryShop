@@ -2,9 +2,11 @@ package com.green.Shop.admin.controller;
 
 import com.green.Shop.admin.service.AdminService;
 import com.green.Shop.admin.service.MenuService;
+import com.green.Shop.admin.vo.SubMenuVO;
 import com.green.Shop.item.vo.ImgVO;
 import com.green.Shop.item.vo.ItemSearchVO;
 import com.green.Shop.item.vo.ItemVO;
+import com.green.Shop.member.vo.MemberVO;
 import com.green.Shop.util.UploadUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ public class AdminController {
     @GetMapping("/regItemForm")
     public String regItemForm(Model model){
         model.addAttribute("cateList", adminService.selectCateList());
-        return "content/admin/reg_item";
+        return "/content/admin/reg_item";
     }
 
     //상품 등록
@@ -75,12 +77,16 @@ public class AdminController {
         adminService.updateStatus(itemVO);
     }
 
-
-
     //회원 목록 페이지
     @GetMapping("/memberManage")
-    public String selectMemberList(){
-        return "content/admin/member_list";
+    public String selectMemberList(Model model){
+        return "/content/admin/member_list";
+    }
+
+    //년별 매출 관리 페이지
+    @GetMapping("/saleManagePerYear")
+    public String saleManagePerYear(){
+        return "/content/admin/sale_manage_per_year";
     }
 
 

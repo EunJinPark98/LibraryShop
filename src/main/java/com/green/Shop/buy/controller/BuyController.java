@@ -53,7 +53,7 @@ public class BuyController {
         System.out.println(buyList);
         model.addAttribute("buyList", buyList);
 
-        return "content/buy/buy_list";
+        return "/content/buy/buy_list";
     }
 
     //바로구매 하러가기
@@ -69,7 +69,7 @@ public class BuyController {
 
         buyService.regBuy(buyVO, buyDetailVO);
 
-        return "content/buy/buy_form";
+        return "/content/buy/buy_form";
     }
 
 }

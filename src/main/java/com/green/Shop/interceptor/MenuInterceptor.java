@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 @Component
 @RequiredArgsConstructor
 public class MenuInterceptor implements HandlerInterceptor {
@@ -16,6 +18,7 @@ public class MenuInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         modelAndView.addObject("menuList", menuService.selectMenuList());
+
 
     }
 }

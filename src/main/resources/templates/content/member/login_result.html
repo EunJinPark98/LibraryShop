@@ -15,10 +15,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
         </script>
     </th:block>
     <th:block th:if="${session.loginInfo != null}">
-        <input type="hidden" id="roll" th:value="${session.loginInfo.memberRoll}">
         <script>
-            const memberRoll = document.querySelector('#roll').value;
-            location.href = memberRoll == 'ADMIN' ? '/admin/itemManage' : '/item/main';
+            location.href = '/item/main';
         </script>
     </th:block>
 </body>
