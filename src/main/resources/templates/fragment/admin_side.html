@@ -19,7 +19,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
                       </h2>
                       <div th:id="${'my-panel-' + state.index}" class="accordion-collapse collapse">
                         <div class="accordion-body" th:each="subMenu : ${menu.subMenuList}">
-                            <a th:href="@{${subMenu.subMenuUrl}(menuCode=${menu.menuCode}, subMenuCode=${subMenu.subMenuCode})}">[[${subMenu.subMenuName}]] / [[${subMenu.subMenuCode}]]</a>
+                            <a th:href="@{${subMenu.subMenuUrl}(menuCode=${menu.menuCode}, subMenuCode=${subMenu.subMenuCode})}">[[${subMenu.subMenuName}]] / [[${subMenu.subMenuCode}]] / [[${subMenuVO.subMenuCode}]]</a>
                         </div>
                       </div>
                     </div>

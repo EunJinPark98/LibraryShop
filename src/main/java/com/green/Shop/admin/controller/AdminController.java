@@ -57,7 +57,7 @@ public class AdminController {
 
     //상품관리 페이지로 이동
     @RequestMapping("/itemManage")
-    public String itemManageForm(ItemSearchVO itemSearchVO, Model model){
+    public String itemManageForm(ItemSearchVO itemSearchVO, Model model, SubMenuVO subMenuVO){
         model.addAttribute("itemList", adminService.selectItemList(itemSearchVO));
         model.addAttribute("cateList", adminService.selectCateList());
         return "/content/admin/item_manage";

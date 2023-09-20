@@ -23,6 +23,11 @@ public class ItemController {
         List<ItemVO> itemList = itemService.displayItemList();
         model.addAttribute("itemList", itemList);
         System.out.println(itemList);
+
+
+        model.addAttribute("modelData", "데이터전달 테스트입니다");
+
+
         return "/content/item/main";
     }
 
