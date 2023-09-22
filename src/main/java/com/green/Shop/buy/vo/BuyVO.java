@@ -9,7 +9,7 @@ import java.util.List;
 public class BuyVO {
     private String buyCode;
     private String memberId;
-    private String buyTotalPrice;
+    private int buyTotalPrice;
     private String buyDate;
     private List<BuyDetailVO> buyDetailList;
 }

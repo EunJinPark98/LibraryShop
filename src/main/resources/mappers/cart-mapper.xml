@@ -41,6 +41,7 @@
             , ITEM_NAME
             , ITEM_PRICE
             , CART_CNT
+            , ITEM.ITEM_CODE
         FROM SHOP_CART CART, SHOP_ITEM ITEM, ITEM_IMG IMG
         WHERE CART.ITEM_CODE = ITEM.ITEM_CODE
         AND ITEM.ITEM_CODE = IMG.ITEM_CODE

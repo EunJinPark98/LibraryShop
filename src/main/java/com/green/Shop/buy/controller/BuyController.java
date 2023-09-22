@@ -1,5 +1,6 @@
 package com.green.Shop.buy.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.green.Shop.buy.service.BuyService;
 import com.green.Shop.buy.vo.BuyDetailVO;
 import com.green.Shop.buy.vo.BuyVO;
@@ -10,12 +11,12 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/buy")
@@ -38,7 +39,7 @@ public class BuyController {
         BuyVO buyVO = new BuyVO();
         buyVO.setBuyCode(buyCode);
         buyVO.setMemberId(loginInfo.getMemberId());
-        buyVO.setBuyTotalPrice(Integer.toString(buyTotalPrice));
+        buyVO.setBuyTotalPrice(buyTotalPrice);
         buyVO.setBuyDetailList(buyDetailList);
         buyService.insertBuy(buyVO, cartVO);
 
@@ -65,11 +66,42 @@ public class BuyController {
         buyVO.setMemberId(((MemberVO)session.getAttribute("loginInfo")).getMemberId());
         buyVO.setBuyCode(buyCode);
 
-        buyVO.setBuyTotalPrice(Integer.toString(buyDetailVO.getBuyPrice()));
+        buyVO.setBuyTotalPrice(buyDetailVO.getBuyPrice());
 
         buyService.regBuy(buyVO, buyDetailVO);
 
         return "/content/buy/buy_form";
+    }
+
+    //장바구니 선택구매
+    @ResponseBody
+    @PostMapping("/insertBuyFetch")
+    public void insertBuyFetch(@RequestBody Map<String, Object> data, HttpSession session){
+        System.out.println(data);
+        BuyVO buyVO = new BuyVO();
+        String buyCode = buyService.selectNextBuyCode();
+        buyVO.setBuyCode(buyCode);
+        MemberVO loginInfo = (MemberVO) session.getAttribute("loginInfo");
+        buyVO.setMemberId(loginInfo.getMemberId());
+        int buyTotalPrice = Integer.parseInt(data.get("buyTotalPrice").toString());
+        buyVO.setBuyTotalPrice(buyTotalPrice);
+
+        //buyVO의 buyDetailList채우기
+        ObjectMapper mapper = new ObjectMapper();
+        BuyDetailVO[] detailArr = mapper.convertValue(data.get("detailList"), BuyDetailVO[].class);
+        List<BuyDetailVO> buyDetailList = Arrays.asList(detailArr);
+        for(BuyDetailVO vo : buyDetailList){
+            vo.setBuyCode(buyCode);
+            vo.setBuyDetailCode(buyCode);
+        }
+        buyVO.setBuyDetailList(buyDetailList);
+
+        CartVO cartVO = new CartVO();
+        String[] cartCodeArr = mapper.convertValue(data.get("cartCodeList"), String[].class);
+        List<String> cartCodeList = Arrays.asList(cartCodeArr);
+        cartVO.setCartCodeList(cartCodeList);
+
+        buyService.insertBuy(buyVO, cartVO);
     }
 
 }
