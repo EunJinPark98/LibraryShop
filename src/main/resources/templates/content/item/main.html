@@ -8,21 +8,13 @@
 </head>
 <body>
     <th:block layout:fragment="content">
-        <style>
-            .card .bookImg{
-                width: 100%;
-                height: 17rem;
-            }
-            .card .bookImg img{
-                width: 100%;
-                height: 100%;
-            }
-        </style>
         <h1>[[${intercepterData}]]</h1>
         <div class="row">
             <div class="col" th:each="item, state: ${itemList}">
-                <div class="card" style="width: 12rem;">
-                    <a th:href="@{/item/detail(itemCode=${item.itemCode})}" class="bookImg"><img th:src="${'/images/' + item.imgList[0].attachedFileName}" class="card-img-top" alt="..."></a>
+                <div class="card mb-4" style="width: 12rem;">
+                    <a th:href="@{/item/detail(itemCode=${item.itemCode})}" class="bookImg">
+                        <img th:src="${'/images/' + item.imgList[0].attachedFileName}" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">[[${item.itemName}]]</h5>
                         <p class="card-text">[[${item.itemIntro}]]</p>
