@@ -88,13 +88,6 @@ a{
 
 
 /* 메인페이지 */
-.card{
-    width: 200px;
-}
-.card img{
-    width: 200px;
-    height: 280px;
-}
 .card-body{
     background-color: #B3B792;
     text-align: center;
@@ -103,17 +96,12 @@ a{
     flex-wrap: wrap;
     align-items: center;
     padding: 10px;
-    width: 200px;
     height: 90px;
     box-sizing: border-box;
 }
 .card-title{
     width: 100%;
-}
-
-.card-title{
     font-weight: bold;
     margin-bottom: 0;
 }
-
 
