@@ -8,9 +8,16 @@
 </head>
 <body>
     <th:block layout:fragment="content">
+        <style>
+            .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            }
+        </style>
         <h1>[[${intercepterData}]]</h1>
-        <div class="row row-cols-5 g-4">
-            <div class="col" th:each="item, state: ${itemList}">
+        <div class="itemList row row-cols-6">
+            <div class="col mb-3" th:each="item, state: ${itemList}">
                 <div class="card">
                     <a th:href="@{/item/detail(itemCode=${item.itemCode})}">
                         <img th:src="${'/images/' + item.imgList[0].attachedFileName}" class="card-img-top" alt="...">
@@ -20,6 +27,15 @@
                         <p class="card-text">[[${item.itemIntro}]]</p>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row text-center mb-3 mt-5">
+            <div class="col">
+                <a th:href="@{/item/main(nowPage=${itemVO.beginPage-1})}"><span th:if="${itemVO.prev}">&lt;</span></a>
+                <th:block th:each="pageNum : ${#numbers.sequence(itemVO.beginPage, itemVO.endPage)}">
+                    <a th:href="@{/item/main(nowPage=${pageNum})}"><span th:text="${pageNum}"></span></a>
+                </th:block>
+                <a th:href="@{/item/main(nowPage=${itemVO.endPage+1})}"><span th:if="${itemVO.next}">&gt;</span></a>
             </div>
         </div>
     </th:block>

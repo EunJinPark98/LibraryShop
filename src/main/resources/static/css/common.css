@@ -86,7 +86,6 @@ a{
     color: #fff;
 }
 
-
 /* 메인페이지 */
 .card-body{
     background-color: #B3B792;
@@ -96,7 +95,6 @@ a{
     flex-wrap: wrap;
     align-items: center;
     padding: 10px;
-    height: 90px;
     box-sizing: border-box;
 }
 .card-title{

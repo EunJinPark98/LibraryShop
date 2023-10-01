@@ -21,9 +21,13 @@ public class ItemController {
 
     //메인 페이지
     @GetMapping("/main")
-    public String shopMain(Model model, String cateCode){
-        List<ItemVO> itemList = itemService.displayItemList(cateCode);
-        model.addAttribute("itemList", itemList);
+    public String shopMain(Model model, ItemVO itemVO){
+        //페이지
+        itemVO.setTotalDataCnt(itemService.totalDataCnt());
+        itemVO.setPageInfo();
+
+        //아이템 목록
+        model.addAttribute("itemList", itemService.displayItemList(itemVO));
 
         return "/content/item/main";
     }

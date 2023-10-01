@@ -41,6 +41,12 @@
             AND CATE_CODE = #{cateCode}
         </if>
         ORDER BY ITEM.ITEM_CODE DESC
+        OFFSET (#{nowPage} - 1) * #{displayDataCnt} ROWS FETCH FIRST #{displayDataCnt} ROWS ONLY
+    </select>
+
+    <select id="totalDataCnt" resultType="int">
+        SELECT COUNT(ITEM_CODE)
+        FROM SHOP_ITEM
     </select>
 
     <!--상품 상세보기-->

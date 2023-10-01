@@ -14,8 +14,13 @@ public class ItemServiceImpl implements ItemService {
     private final SqlSessionTemplate sqlSession;
 
     @Override
-    public List<ItemVO> displayItemList(String cateCode) {
-        return sqlSession.selectList("itemMapper.displayItemList", cateCode);
+    public List<ItemVO> displayItemList(ItemVO itemVO) {
+        return sqlSession.selectList("itemMapper.displayItemList", itemVO);
+    }
+
+    @Override
+    public int totalDataCnt() {
+        return sqlSession.selectOne("itemMapper.totalDataCnt");
     }
 
     @Override

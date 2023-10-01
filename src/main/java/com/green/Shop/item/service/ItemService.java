@@ -7,7 +7,10 @@ import java.util.List;
 public interface ItemService {
 
     //상품 전시
-    public List<ItemVO> displayItemList(String cateCode);
+    public List<ItemVO> displayItemList(ItemVO itemVO);
+
+    //총 상품 수
+    public int totalDataCnt();
 
     //상품 상세
     public ItemVO itemDetail(String itemCode);

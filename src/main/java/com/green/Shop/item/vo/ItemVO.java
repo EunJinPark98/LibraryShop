@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ItemVO {
+public class ItemVO extends PageVO{
     private String itemCode;
     private String itemName;
     private int itemPrice;
@@ -14,4 +14,5 @@ public class ItemVO {
     private String cateCode;
     private int itemStatus;
     private List<ImgVO> imgList;
+
 }
