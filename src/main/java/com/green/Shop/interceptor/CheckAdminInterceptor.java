@@ -15,6 +15,7 @@ public class CheckAdminInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         MemberVO loginInfo = (MemberVO)session.getAttribute("loginInfo");
 
+
         if(loginInfo == null || !loginInfo.getMemberRoll().equals("ADMIN")){
             response.sendRedirect("/item/main");
             return false; //false면 검문소에 걸림 다른 페이지로 이동
