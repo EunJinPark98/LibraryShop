@@ -43,14 +43,13 @@
         )
     </insert>
 
-    <!--로그인-->
-    <select id="login" resultMap="member">
+    <!-- 시큐리티 로그인-->
+    <select id="selectLoginInfo" resultMap="member">
         SELECT MEMBER_ID
-            , MEMBER_NAME
+            , MEMBER_PW
             , MEMBER_ROLL
         FROM SHOP_MEMBER
         WHERE MEMBER_ID = #{memberId}
-        AND MEMBER_PW = #{memberPw}
     </select>
 
     <select id="idCheck" resultType="String">

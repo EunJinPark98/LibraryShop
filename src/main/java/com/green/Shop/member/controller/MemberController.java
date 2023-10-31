@@ -5,6 +5,7 @@ import com.green.Shop.member.vo.MemberVO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import java.lang.reflect.Member;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/joinForm")
     public String joinForm(){
@@ -27,6 +29,8 @@ public class MemberController {
 
     @PostMapping("/join")
     public String join(MemberVO memberVO){
+        String encodedPw = passwordEncoder.encode(memberVO.getMemberPw());
+        memberVO.setMemberPw(encodedPw);
         memberService.join(memberVO);
         return "redirect:/";
     }
@@ -36,20 +40,6 @@ public class MemberController {
         return "/content/member/login";
     }
 
-    @PostMapping("/login")
-    public String login(MemberVO memberVO, HttpSession session){
-        MemberVO loginInfo = memberService.login(memberVO);
-        if(loginInfo != null){
-            session.setAttribute("loginInfo", loginInfo);
-        }
-        return "/content/member/login_result";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session){
-        session.removeAttribute("loginInfo");
-        return "redirect:/";
-    }
 
     @ResponseBody
     @PostMapping("/idCheckFetch")
@@ -60,6 +50,11 @@ public class MemberController {
     @GetMapping("/info")
     public String memberInfo(){
         return "/content/member/member_info";
+    }
+
+    @GetMapping("/denyPage")
+    public String denyPage(){
+        return "/content/member/deny";
     }
 
 
